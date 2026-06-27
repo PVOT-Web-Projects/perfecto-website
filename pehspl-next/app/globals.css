@@ -417,11 +417,12 @@ section { scroll-margin-top: 80px; }
   overflow: hidden;
 }
 .offers-head { flex: none; padding: clamp(16px, 2.6vh, 30px) 0 clamp(8px, 1.4vh, 16px); }
-.offers-viewport { flex: 1; overflow: hidden; display: flex; align-items: center; }
-.offers-row { display: flex; align-items: stretch; gap: 24px; padding: 0 clamp(20px, 3.5vw, 48px); will-change: transform; }
+.offers-viewport { flex: 1; min-height: 0; overflow: hidden; display: flex; align-items: stretch; }
+.offers-row { display: flex; align-items: center; gap: 24px; padding: 0 clamp(20px, 3.5vw, 48px); height: 100%; will-change: transform; }
 .offer-slide {
   flex: 0 0 calc(100vw - clamp(64px, 10vw, 150px));   /* near full-width, with gutters + a peek of the next */
   height: min(84vh, 760px);
+  max-height: calc(100% - 24px);    /* never exceed the pinned viewport, so the title can't crop */
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
