@@ -28,9 +28,6 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: pehspl-next
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -57,8 +54,8 @@ jobs:
           node-version: "25"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
           cache-dependency-path: |
-            pehspl-next/package-lock.json
-            pehspl-next/yarn.lock
+            package-lock.json
+            yarn.lock
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
@@ -67,13 +64,13 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
-          generator_config_file: pehspl-next/next.config.mjs
+          generator_config_file: next.config.mjs
           enablement: true
       - name: Restore cache
         uses: actions/cache@v4
         with:
           path: |
-            pehspl-next/.next/cache
+            .next/cache
           # Generate a new cache whenever packages or source files change.
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           # If source files changed but packages didn't, rebuild from a prior cache.
@@ -86,7 +83,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./pehspl-next/out
+          path: ./out
 
   # Deployment job
   deploy:
