@@ -20,7 +20,7 @@ npm start
 
 ```
 app/
-  layout.js        Root layout — loads Inter (next/font), mounts <ScrollReveal/>
+  layout.js        Root layout — metadata, mounts <ScrollReveal/>
   page.js          Composes all section components in order
   globals.css      Design tokens + shared primitives + section styles
 components/

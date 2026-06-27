@@ -1,3 +1,28 @@
+/* ===== Fonts: self-hosted Helvetica Neue =====
+   Each face is mapped one weight-level lighter than requested, so the
+   whole site renders a notch less bold without editing individual
+   font-weights:  400->Light, 500/600->Roman, 700->Medium, 800->Bold. */
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeueLight.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
+  font-weight: 500 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeueMedium.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeueBold.otf') format('opentype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+
 /* ===== Design Tokens ===== */
 :root {
   --slate:        #4a6073;
@@ -21,7 +46,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--font-inter), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: var(--ink);
   background: var(--bg);
   line-height: 1.6;
@@ -198,22 +223,69 @@ section { scroll-margin-top: 80px; }
 .section-pad { padding: 72px 0; }
 
 /* ===== Who We Are ===== */
-.who { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
-.who h2 {
-  font-size: clamp(26px, 3.4vw, 38px);
+.who { display: grid; grid-template-columns: 1fr 1.05fr; gap: 64px; align-items: stretch; }
+.who-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: clamp(26px, 3.4vw, 36px);
   font-weight: 700;
-  line-height: 1.15;
-  margin: 18px 0 22px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  color: #4a545d;
+  margin-bottom: 30px;
 }
-.who p { color: var(--muted); margin-bottom: 18px; font-size: 15.5px; }
+.who-mark { width: 26px; height: 26px; background: var(--slate); border-radius: 4px; flex: none; }
+.who .lead { color: #2f373f; font-weight: 600; font-size: 16px; margin-bottom: 18px; line-height: 1.6; }
+.who p { color: var(--muted); margin-bottom: 18px; font-size: 15px; line-height: 1.75; }
+.who .text-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 4px;
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+.who .text-link:hover { color: var(--slate); border-color: var(--slate); }
+.who-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+  margin: 26px 0 6px;
+}
+.who-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3a444d;
+  line-height: 1.45;
+}
+.hl-ico {
+  flex: none;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(74,96,115,.12);
+  color: var(--slate);
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 1px;
+}
 .who .media {
   border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 4 / 3;
-  background:
-    linear-gradient(120deg, rgba(74,96,115,.10), rgba(74,96,115,0)),
-    url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80") center/cover;
-  box-shadow: 0 24px 50px -28px rgba(50,66,82,.5);
+  min-height: 300px;            /* fallback height when stacked on mobile */
+  border-bottom: 4px solid var(--accent);
+  background: url("/hero_bg_image.png") center/cover;
+  box-shadow: 0 26px 54px -30px rgba(50,66,82,.55);
 }
 
 /* ===== Statement band ===== */
@@ -549,7 +621,7 @@ footer { background: var(--slate-deep); color: rgba(255,255,255,.72); padding: 6
   .hero-content { padding: 44px 30px; }
 }
 @media (max-width: 560px) {
-  .stat-grid, .feat-grid, .form .row { grid-template-columns: 1fr; }
+  .stat-grid, .feat-grid, .form .row, .who-highlights { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr; }
   .logo-row { grid-template-columns: repeat(2, 1fr); }
   .hero-card { min-height: calc(100svh - 100px); }
