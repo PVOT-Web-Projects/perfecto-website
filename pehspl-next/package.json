@@ -1,0 +1,16 @@
+{
+  "name": "pehspl-next",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PEHSPL — Perfect Engitech & Healthcare Solutions marketing site (Next.js)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^14.2.35",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}

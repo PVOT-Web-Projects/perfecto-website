@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PEHSPL — Building Sterile Spaces Where Healing Begins</title>
+  <meta name="description" content="Perfect Engitech & Healthcare Solutions Pvt. Ltd. — Engineered to EU standards, trusted by 150+ hospitals across India and abroad. Modular operating theatres, ICUs and IVF labs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== Design Tokens ===== */
+    :root {
+      --slate:        #4a6073;
+      --slate-dark:   #3c4f5f;
+      --slate-deep:   #324252;
+      --accent:       #e89a33;
+      --ink:          #222b33;
+      --muted:        #6b7884;
+      --line:         #e3e7ea;
+      --bg:           #ffffff;
+      --bg-soft:      #f5f6f7;
+      --placeholder:  #e8eaec;
+      --radius:       14px;
+      --radius-lg:    22px;
+      --maxw:         1180px;
+      --ease:         cubic-bezier(.4, 0, .2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .wrap {
+      width: 100%;
+      max-width: none;            /* full screen width */
+      margin: 0 auto;
+      padding: 0 clamp(24px, 4vw, 72px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 14px; height: 14px;
+      background: var(--slate);
+      border-radius: 3px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all .25s var(--ease);
+    }
+    .btn-primary {
+      background: var(--slate);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--slate-dark); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line);
+    }
+    .btn-ghost:hover { border-color: var(--slate); color: var(--slate); }
+    .btn-light {
+      background: #fff;
+      color: var(--slate-deep);
+    }
+    .btn-light:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+    .btn .arrow { transition: transform .25s var(--ease); }
+    .btn:hover .arrow { transform: translateX(4px); }
+
+    /* ===== Header / Nav ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding-top: 14px;
+      background: transparent;
+      pointer-events: none;          /* only the card itself is interactive */
+    }
+    .nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 82px;
+      padding: 0 38px;
+      background: #fff;
+      border-radius: 999px;
+      box-shadow:
+        0 28px 58px -16px rgba(40,56,70,.36),
+        0 12px 26px -12px rgba(40,56,70,.24);
+      pointer-events: auto;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+    }
+    .brand-logo {
+      height: 58px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .07em;
+      color: #56636e;
+      transition: color .2s var(--ease);
+    }
+    .nav-links a:hover { color: var(--slate); }
+
+    .nav-cta {
+      background: var(--slate);
+      color: #fff;
+      padding: 15px 32px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .1em;
+    }
+    .nav-cta:hover { background: var(--slate-dark); }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+    .menu-toggle span { width: 24px; height: 2px; background: var(--ink); border-radius: 2px; }
+
+    /* ===== Hero ===== */
+    .hero { padding: 24px 0 72px; }
+    .hero-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-height: calc(100vh - 160px);
+      min-height: calc(100svh - 160px);   /* a touch shorter than the viewport so the card edges show */
+      display: flex;
+      align-items: center;
+      border-bottom: 5px solid var(--accent);
+      box-shadow: 0 34px 64px -42px rgba(40,56,70,.45);
+      background:
+        linear-gradient(90deg, rgba(238,244,248,.95) 0%, rgba(238,244,248,.68) 24%, rgba(238,244,248,.22) 46%, rgba(238,244,248,0) 64%),
+        url("hero_bg_image.png") center/cover;
+    }
+    .hero-content {
+      padding: 56px clamp(32px, 5vw, 72px);
+      max-width: 600px;
+      color: #2b333b;
+    }
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -.015em;
+      margin-bottom: 22px;
+      color: #2b333b;
+    }
+    .hero p {
+      font-size: 17px;
+      font-weight: 400;
+      color: #5b656f;
+      max-width: 430px;
+      margin-bottom: 32px;
+    }
+
+    /* ===== Section base ===== */
+    section { scroll-margin-top: 80px; }
+    .section-pad { padding: 72px 0; }
+
+    /* ===== Who We Are ===== */
+    .who { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+    .who h2 {
+      font-size: clamp(26px, 3.4vw, 38px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 18px 0 22px;
+    }
+    .who p { color: var(--muted); margin-bottom: 18px; font-size: 15.5px; }
+    .who .media {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background:
+        linear-gradient(120deg, rgba(74,96,115,.10), rgba(74,96,115,0)),
+        url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80") center/cover;
+      box-shadow: 0 24px 50px -28px rgba(50,66,82,.5);
+    }
+
+    /* ===== Statement band ===== */
+    .statement { text-align: center; padding: 60px 0 30px; }
+    .statement h2 {
+      font-size: clamp(24px, 4vw, 44px);
+      font-weight: 700;
+      line-height: 1.2;
+      color: #c7cdd2;
+      letter-spacing: -.01em;
+    }
+    .statement h2 .accent { color: var(--slate); }
+    .ph-box {
+      margin: 44px auto 0;
+      max-width: 760px;
+      height: 300px;
+      background: var(--placeholder);
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      color: #9aa4ad;
+      font-weight: 600;
+      letter-spacing: .14em;
+      font-size: 14px;
+    }
+
+    /* ===== Scroll-driven 3D frame sequence =====
+       Default (no frames yet): renders as a static placeholder box.
+       When SCROLL_3D.enabled is true, JS adds .is-active and it becomes
+       a full-bleed, pinned canvas that scrubs through the frame images. */
+    .scroll3d {
+      max-width: 760px;
+      margin: 44px auto 0;
+      padding: 0 24px;
+    }
+    .scroll3d__sticky {
+      position: relative;
+      height: 300px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--placeholder);
+      display: grid;
+      place-items: center;
+    }
+    .scroll3d__canvas { display: none; width: 100%; height: 100%; }
+    .scroll3d__placeholder {
+      color: #9aa4ad;
+      font-weight: 600;
+      letter-spacing: .14em;
+      font-size: 14px;
+    }
+    .scroll3d__hint {
+      display: none;
+      position: absolute;
+      bottom: 28px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      animation: sf-bob 1.8s ease-in-out infinite;
+    }
+    @keyframes sf-bob { 0%,100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,6px); } }
+
+    /* Active scrub mode */
+    .scroll3d.is-active {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      /* height is set inline by JS from SCROLL_3D.scrollHeightVh */
+    }
+    .scroll3d.is-active .scroll3d__sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      border-radius: 0;
+      background: #0e1620;
+    }
+    .scroll3d.is-active .scroll3d__canvas { display: block; object-fit: contain; }
+    .scroll3d.is-active .scroll3d__placeholder { display: none; }
+    .scroll3d.is-active .scroll3d__hint { display: block; }
+
+    /* ===== Core offerings ===== */
+    .core-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+    .core-head h2 {
+      font-size: clamp(24px, 3.2vw, 34px);
+      font-weight: 700;
+      margin: 16px 0 14px;
+    }
+    .core-head p { color: var(--muted); }
+
+    .offer-track {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .offer-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 360px;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 20px 40px -26px rgba(50,66,82,.55);
+    }
+    .offer-card::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(24,34,44,.92) 0%, rgba(24,34,44,.25) 55%, rgba(24,34,44,0) 100%);
+    }
+    .offer-card.o1 { background-image: url("https://images.unsplash.com/photo-1632053002928-1919348c4e64?auto=format&fit=crop&w=1000&q=80"); }
+    .offer-card.o2 { background-image: url("https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=1000&q=80"); }
+    .offer-card.o3 { background-image: url("https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1000&q=80"); }
+    .offer-body { position: relative; z-index: 1; padding: 28px; }
+    .offer-body h3 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+    .offer-body p { font-size: 13px; color: rgba(255,255,255,.82); margin-bottom: 16px; line-height: 1.55; }
+    .offer-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600;
+      padding: 9px 18px;
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 40px;
+      transition: all .2s var(--ease);
+    }
+    .offer-link:hover { background: #fff; color: var(--slate-deep); }
+
+    /* ===== Stat counters ===== */
+    .stats { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: center; }
+    .stats-intro h2 {
+      font-size: clamp(24px, 3.2vw, 34px);
+      font-weight: 700;
+      margin: 16px 0 14px;
+    }
+    .stats-intro p { color: var(--muted); }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .stat {
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border: 1px solid var(--line);
+    }
+    .stat.fill { background: var(--slate); color: #fff; border-color: var(--slate); }
+    .stat .num { font-size: 44px; font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+    .stat .lbl { margin-top: 12px; font-size: 14px; font-weight: 500; }
+    .stat:not(.fill) .lbl { color: var(--muted); }
+
+    /* ===== Why choose ===== */
+    .why { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: start; }
+    .why-left h2 { font-size: clamp(26px, 3.4vw, 40px); font-weight: 700; line-height: 1.12; margin: 16px 0 22px; }
+    .why-left p { color: var(--muted); font-size: 15px; }
+    .why-list { display: flex; flex-direction: column; }
+    .why-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 22px;
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+    }
+    .why-item:last-child { border-bottom: 1px solid var(--line); }
+    .why-ico {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      display: grid; place-items: center;
+      color: var(--slate);
+    }
+    .why-ico svg { width: 26px; height: 26px; }
+    .why-item h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .why-item p { color: var(--muted); font-size: 14.5px; }
+
+    /* ===== Plug and build ===== */
+    .plug { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+    .plug h2 {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      line-height: 1.25;
+      text-transform: uppercase;
+      letter-spacing: .01em;
+      margin: 16px 0 30px;
+    }
+    .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 32px; margin-bottom: 34px; }
+    .feat { display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start; }
+    .feat .n {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      display: grid; place-items: center;
+      font-weight: 700;
+      color: var(--slate);
+      font-size: 15px;
+    }
+    .feat p { font-size: 14.5px; font-weight: 500; padding-top: 8px; }
+    .plug .ph-box { margin: 0; max-width: none; height: 100%; min-height: 420px; }
+
+    /* ===== Featured projects ===== */
+    .feat-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 34px; gap: 24px; flex-wrap: wrap; }
+    .feat-head h2 { font-size: clamp(26px, 3.4vw, 38px); font-weight: 700; line-height: 1.12; max-width: 420px; }
+    .project-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-height: 460px;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      background:
+        linear-gradient(to top, rgba(24,34,44,.85), rgba(24,34,44,.05) 60%),
+        url("https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1600&q=80") center/cover;
+    }
+    .project-meta { position: relative; z-index: 1; padding: 38px 40px; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; }
+    .project-meta .place { font-size: 24px; font-weight: 600; }
+    .project-meta .place small { display: block; font-size: 13px; font-weight: 400; color: rgba(255,255,255,.75); margin-top: 4px; }
+    .arrows { display: flex; gap: 12px; }
+    .arrows button {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.5);
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all .2s var(--ease);
+    }
+    .arrows button:hover { background: #fff; color: var(--slate-deep); }
+
+    /* ===== Trusted by ===== */
+    .trusted { text-align: center; }
+    .trusted .eyebrow { margin-bottom: 36px; }
+    .logo-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+    .logo-chip {
+      height: 70px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: #9aa4ad;
+      font-weight: 700;
+      letter-spacing: .04em;
+      font-size: 15px;
+      background: #fff;
+      transition: all .2s var(--ease);
+    }
+    .logo-chip:hover { border-color: var(--slate); color: var(--slate); }
+
+    /* ===== CTA / Contact ===== */
+    .cta { background: var(--slate); color: #fff; }
+    .cta-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 76px 0; }
+    .cta h2 {
+      font-size: clamp(34px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -.01em;
+    }
+    .cta h2 span { display: block; }
+    .cta .sub { margin-top: 20px; color: rgba(255,255,255,.8); max-width: 360px; }
+
+    .form { display: flex; flex-direction: column; gap: 16px; }
+    .form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form input, .form textarea {
+      width: 100%;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 10px;
+      padding: 15px 18px;
+      color: #fff;
+      font: inherit;
+      font-size: 14px;
+      transition: border-color .2s var(--ease), background .2s var(--ease);
+    }
+    .form input::placeholder, .form textarea::placeholder { color: rgba(255,255,255,.6); }
+    .form input:focus, .form textarea:focus {
+      outline: none;
+      border-color: #fff;
+      background: rgba(255,255,255,.14);
+    }
+    .form textarea { resize: vertical; min-height: 110px; }
+    .form .btn-light { align-self: flex-start; margin-top: 4px; }
+
+    /* ===== Footer ===== */
+    footer { background: var(--slate-deep); color: rgba(255,255,255,.72); padding: 64px 0 28px; }
+    .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+    .foot-about .brand { margin-bottom: 20px; }
+    .foot-about .brand-logo { height: 54px; filter: brightness(0) invert(1); opacity: .9; }
+    .foot-about p { font-size: 13.5px; line-height: 1.7; max-width: 340px; }
+    .foot-social { display: flex; gap: 12px; margin-top: 22px; }
+    .foot-social a {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.2);
+      display: grid; place-items: center;
+      color: #fff;
+      transition: all .2s var(--ease);
+    }
+    .foot-social a:hover { background: #fff; color: var(--slate-deep); }
+    .foot-col h4 { color: #fff; font-size: 14px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 18px; }
+    .foot-col ul li { margin-bottom: 12px; }
+    .foot-col ul li a { font-size: 14px; transition: color .2s var(--ease); }
+    .foot-col ul li a:hover { color: #fff; }
+    .foot-bottom {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+    .foot-bottom a { transition: color .2s; }
+    .foot-bottom a:hover { color: #fff; }
+
+    /* ===== Reveal animation ===== */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: flex; }
+      .who, .stats, .why, .plug, .cta-inner { grid-template-columns: 1fr; gap: 36px; }
+      .offer-track { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+      .logo-row { grid-template-columns: repeat(3, 1fr); }
+      .hero-content { padding: 44px 30px; }
+    }
+    @media (max-width: 560px) {
+      .stat-grid, .feat-grid, .form .row { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr; }
+      .logo-row { grid-template-columns: repeat(2, 1fr); }
+      .hero-card { min-height: calc(100svh - 100px); }
+      .section-pad { padding: 52px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="wrap">
+      <div class="nav">
+      <a href="#" class="brand" aria-label="PEHSPL home">
+        <img class="brand-logo" src="Logo.png" alt="PEHSPL — Perfect Engitech &amp; Healthcare Solutions" />
+      </a>
+      <nav class="nav-links">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#solutions">SOLUTIONS</a>
+        <a href="#services">SERVICES</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#insights">INSIGHTS</a>
+      </nav>
+      <a href="#contact" class="nav-cta">CONTACT US</a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section id="home" class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="hero-content">
+          <h1>Building Sterile Spaces Where Healing Begins</h1>
+          <p>Engineered to EU standards, trusted by 150+ hospitals across India and abroad.</p>
+          <a href="#solutions" class="btn btn-primary">Explore Our Solutions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Who We Are ===== -->
+  <section id="about" class="section-pad">
+    <div class="wrap who reveal">
+      <div>
+        <span class="eyebrow">Who We Are</span>
+        <h2>World-class cleanroom partition technology for healthcare</h2>
+        <p>Perfect Engitech &amp; Healthcare Solutions Pvt. Ltd. (PEHSPL), in exclusive association with Nicomac Far East, was established to bring world-class cleanroom partition technology to the healthcare sector.</p>
+        <p>With over 550 operating theatres and 50 IVF labs delivered across 150+ hospitals in India and abroad, we bring deep expertise in OT complex design, patient flow and systems integration — working alongside India's leading hospital architects and consultants.</p>
+        <a href="#about" class="btn btn-ghost" style="margin-top:14px;">Know More <span class="arrow">→</span></a>
+      </div>
+      <div class="media" role="img" aria-label="Sterile operating theatre interior"></div>
+    </div>
+  </section>
+
+  <!-- ===== Statement band + scroll-driven 3D frames ===== -->
+  <section class="statement">
+    <div class="wrap reveal">
+      <h2>Designed for sterility<br><span class="accent">Engineered to perform</span><br>Sterile. Seamless. Certified</h2>
+    </div>
+    <!-- Scroll-frame scrubber (full-bleed when active). Stays a placeholder until frames are configured in SCROLL_3D below. -->
+    <div class="scroll3d" id="scroll3d">
+      <div class="scroll3d__sticky">
+        <canvas class="scroll3d__canvas"></canvas>
+        <div class="scroll3d__placeholder">3D SECTION</div>
+        <div class="scroll3d__hint">Scroll to explore</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Core offerings ===== -->
+  <section id="solutions" class="section-pad">
+    <div class="wrap">
+      <div class="core-head reveal">
+        <span class="eyebrow">Core Offerings</span>
+        <h2>End-to-end design, supply &amp; execution</h2>
+        <p>Infection-free, sterile healthcare environments — engineered from concept to commissioning.</p>
+      </div>
+      <div class="offer-track reveal">
+        <article class="offer-card o1">
+          <div class="offer-body">
+            <h3>Modular Operating Theatres</h3>
+            <p>Self-standing, pre-engineered OT panels delivering EU-grade sterility, seamless surfaces and rapid, civil-free installation.</p>
+            <a href="#contact" class="offer-link">Learn more →</a>
+          </div>
+        </article>
+        <article class="offer-card o2">
+          <div class="offer-body">
+            <h3>ICUs &amp; Critical Care</h3>
+            <p>Antimicrobial, easy-clean partition systems engineered for high-acuity infection-controlled environments.</p>
+            <a href="#contact" class="offer-link">Learn more →</a>
+          </div>
+        </article>
+        <article class="offer-card o3">
+          <div class="offer-body">
+            <h3>IVF Labs</h3>
+            <p>VOC-free, controlled-environment labs designed for embryology with precision airflow and material safety.</p>
+            <a href="#contact" class="offer-link">Learn more →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Stat counters ===== -->
+  <section class="section-pad" style="background:var(--bg-soft);">
+    <div class="wrap stats reveal">
+      <div class="stats-intro">
+        <span class="eyebrow">Stat Counters</span>
+        <h2>Proven at scale, certified by results</h2>
+        <p>Numbers that reflect deep expertise across hundreds of sterile healthcare environments.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="num">550+</div>
+          <div class="lbl">Operating Theatres Completed</div>
+        </div>
+        <div class="stat fill">
+          <div class="num">50+</div>
+          <div class="lbl">IVF Labs Delivered</div>
+        </div>
+        <div class="stat fill">
+          <div class="num">150+</div>
+          <div class="lbl">Hospitals Served in India &amp; Abroad</div>
+        </div>
+        <div class="stat">
+          <div class="num">300+</div>
+          <div class="lbl">SQM Manufacturing Capacity Per Day</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Why choose PEHSPL ===== -->
+  <section id="services" class="section-pad">
+    <div class="wrap why reveal">
+      <div class="why-left">
+        <span class="eyebrow">Why Choose</span>
+        <h2>Why choose PEHSPL</h2>
+        <p>From patented innovation to European manufacturing standards, every project is delivered with speed, precision and uncompromising quality.</p>
+      </div>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="why-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg>
+          </div>
+          <div>
+            <h3>Continuous Innovation</h3>
+            <p>2 patents and 9 new profiles developed in the last 3 years, with ongoing R&amp;D in materials and systems.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 2L4.5 13.5H11l-1 8.5L19.5 10H13z"/></svg>
+          </div>
+          <div>
+            <h3>Speed Without Compromise</h3>
+            <p>Expertise in fast-track projects with strict timelines; self-standing panels eliminate civil work delays.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <h3>EU-Certified, Make in India</h3>
+            <p>Manufactured at an 8 lakh sq. ft. facility with fully automated machines, to European standards.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Plug and build ===== -->
+  <section class="section-pad" style="background:var(--bg-soft);">
+    <div class="wrap plug reveal">
+      <div>
+        <span class="eyebrow">The PEHSPL Advantage</span>
+        <h2>Plug-and-build healthcare infrastructure, one sterile space at a time</h2>
+        <div class="feat-grid">
+          <div class="feat"><div class="n">1</div><p>Faster than civil construction</p></div>
+          <div class="feat"><div class="n">2</div><p>Hassle-free site installation</p></div>
+          <div class="feat"><div class="n">3</div><p>EU certified, USFDA compliant</p></div>
+          <div class="feat"><div class="n">4</div><p>Infection-free, easy-clean surfaces</p></div>
+          <div class="feat"><div class="n">5</div><p>Patented panel profiles</p></div>
+          <div class="feat"><div class="n">6</div><p>Lower lifetime cost</p></div>
+        </div>
+        <a href="#solutions" class="btn btn-primary">Explore Our Solutions <span class="arrow">→</span></a>
+      </div>
+      <div class="ph-box">3D SECTION</div>
+    </div>
+  </section>
+
+  <!-- ===== Featured projects ===== -->
+  <section id="projects" class="section-pad">
+    <div class="wrap">
+      <div class="feat-head reveal">
+        <div>
+          <span class="eyebrow">Featured Projects</span>
+          <h2 style="margin-top:14px;">Experience the exceptional up close</h2>
+        </div>
+        <a href="#projects" class="btn btn-ghost">View All Projects <span class="arrow">→</span></a>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-meta">
+          <div class="place">Ahmedabad<small>Modular Operating Theatre Complex</small></div>
+          <div class="arrows">
+            <button aria-label="Previous project">←</button>
+            <button aria-label="Next project">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Trusted by ===== -->
+  <section id="insights" class="section-pad" style="background:var(--bg-soft);">
+    <div class="wrap trusted reveal">
+      <span class="eyebrow">Trusted By</span>
+      <div class="logo-row">
+        <div class="logo-chip">Aster</div>
+        <div class="logo-chip">Apollo</div>
+        <div class="logo-chip">Fortis</div>
+        <div class="logo-chip">CIMS</div>
+        <div class="logo-chip">Manipal</div>
+        <div class="logo-chip">Aster</div>
+        <div class="logo-chip">HCG</div>
+        <div class="logo-chip">Cytecare</div>
+        <div class="logo-chip">Narayana</div>
+        <div class="logo-chip">Zydus</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA / Contact ===== -->
+  <section id="contact" class="cta">
+    <div class="wrap cta-inner reveal">
+      <div>
+        <h2><span>Let's make a</span><span>sterile space</span><span>Together</span></h2>
+        <p class="sub">Tell us about your project. Our team will get back within one business day.</p>
+      </div>
+      <form class="form" onsubmit="return false;">
+        <input type="text" placeholder="Full Name" aria-label="Full Name" required />
+        <div class="row">
+          <input type="email" placeholder="Email" aria-label="Email" required />
+          <input type="tel" placeholder="Phone" aria-label="Phone" />
+        </div>
+        <textarea placeholder="Message" aria-label="Message"></textarea>
+        <button type="submit" class="btn btn-light">Submit <span class="arrow">→</span></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-about">
+          <a href="#" class="brand" aria-label="PEHSPL home">
+            <img class="brand-logo" src="Logo.png" alt="PEHSPL — Perfect Engitech &amp; Healthcare Solutions" />
+          </a>
+          <p>Perfect Engitech &amp; Healthcare Solutions Private Limited, in an exclusive association with Nicomac Far East, was established to advocate for cleanroom partitions in the healthcare sector.</p>
+          <div class="foot-social">
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Instagram">ig</a>
+            <a href="#" aria-label="YouTube">▶</a>
+            <a href="#" aria-label="X">x</a>
+          </div>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#insights">Insights</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="#solutions">Modular OT</a></li>
+            <li><a href="#solutions">ICUs</a></li>
+            <li><a href="#solutions">IVF Labs</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Perfect Engitech &amp; Healthcare Solutions Pvt. Ltd. All rights reserved.</span>
+        <span>Engineered to EU standards · Make in India</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* =====================================================================
+       SCROLL-DRIVEN 3D FRAME SEQUENCE
+       ---------------------------------------------------------------------
+       When your frames arrive, set enabled:true and fill in the details.
+       Frames should be named with a zero-padded counter, e.g.
+         frames/3d/frame_0001.jpg ... frame_0120.jpg
+       => path:'frames/3d/', prefix:'frame_', pad:4, ext:'jpg', frameCount:120
+       Tip: export ~90–150 frames as WebP/optimized JPG (1600px wide is plenty).
+       ===================================================================== */
+    const SCROLL_3D = {
+      enabled: false,          // <-- flip to true once frames are in place
+      frameCount: 0,           // total number of frames
+      path: 'frames/3d/',      // folder (relative to this HTML file)
+      prefix: 'frame_',        // filename prefix
+      pad: 4,                  // zero-padding width -> frame_0001.jpg
+      ext: 'jpg',              // 'jpg' | 'png' | 'webp'
+      scrollHeightVh: 320,     // scrub distance; larger = slower, more frames to scrub
+    };
+
+    function initScrollFrames(cfg) {
+      const el = document.getElementById('scroll3d');
+      if (!el || !cfg.enabled || cfg.frameCount < 1) return; // stays a placeholder
+
+      const sticky = el.querySelector('.scroll3d__sticky');
+      const canvas = el.querySelector('.scroll3d__canvas');
+      const ctx = canvas.getContext('2d');
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      el.classList.add('is-active');
+      el.style.height = cfg.scrollHeightVh + 'vh';
+
+      const url = (i) => `${cfg.path}${cfg.prefix}${String(i).padStart(cfg.pad, '0')}.${cfg.ext}`;
+      const images = [];
+      for (let i = 1; i <= cfg.frameCount; i++) {
+        const img = new Image();
+        img.src = url(i);
+        images.push(img);
+      }
+
+      function resize() {
+        const r = sticky.getBoundingClientRect();
+        canvas.width = Math.round(r.width * dpr);
+        canvas.height = Math.round(r.height * dpr);
+        draw();
+      }
+
+      function currentIndex() {
+        const scrollable = el.offsetHeight - window.innerHeight;
+        const progress = scrollable > 0 ? -el.getBoundingClientRect().top / scrollable : 0;
+        const clamped = Math.min(1, Math.max(0, progress));
+        return Math.min(cfg.frameCount - 1, Math.round(clamped * (cfg.frameCount - 1)));
+      }
+
+      function draw() {
+        const img = images[currentIndex()];
+        if (!img || !img.complete || !img.naturalWidth) return;
+        const cw = canvas.width, ch = canvas.height;
+        ctx.clearRect(0, 0, cw, ch);
+        const ir = img.naturalWidth / img.naturalHeight, cr = cw / ch;
+        let w, h;
+        if (ir > cr) { w = cw; h = cw / ir; } else { h = ch; w = ch * ir; }
+        ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
+      }
+
+      let ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { draw(); ticking = false; });
+      }
+
+      // Draw the first frame as soon as it loads so there's no blank flash.
+      if (images[0]) images[0].addEventListener('load', resize, { once: true });
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', resize);
+      resize();
+    }
+    initScrollFrames(SCROLL_3D);
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Mobile menu (simple toggle of nav links visibility)
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle && toggle.addEventListener('click', () => {
+      const shown = links.style.display === 'flex';
+      links.style.display = shown ? '' : 'flex';
+      if (!shown) {
+        Object.assign(links.style, {
+          position: 'absolute', top: 'calc(100% + 8px)', left: 0, right: 0,
+          flexDirection: 'column', background: '#fff', padding: '20px 24px',
+          gap: '18px', borderRadius: '16px',
+          boxShadow: '0 18px 40px -20px rgba(40,56,70,.25)'
+        });
+      }
+    });
+  </script>
+</body>
+</html>
