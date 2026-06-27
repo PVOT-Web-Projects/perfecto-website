@@ -17,7 +17,7 @@ export default function StatCounters() {
             healthcare environments.
           </p>
         </div>
-        <div className="stat-grid">
+        <div className="stat-grid reveal-stagger">
           {STATS.map((s) => (
             <div key={s.lbl} className={s.fill ? 'stat fill' : 'stat'}>
               <div className="num">{s.num}</div>

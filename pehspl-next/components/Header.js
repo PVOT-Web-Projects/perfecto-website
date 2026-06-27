@@ -34,7 +34,7 @@ export default function Header() {
   return (
     <header>
       <div className="wrap">
-        <div className="nav">
+        <div className="nav intro d1">
           <a href="#home" className="brand" aria-label="PEHSPL home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img

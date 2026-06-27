@@ -16,7 +16,7 @@ export default function PlugAndBuild() {
           <h2>
             Plug-and-build healthcare infrastructure, one sterile space at a time
           </h2>
-          <div className="feat-grid">
+          <div className="feat-grid reveal-stagger">
             {FEATURES.map((f, i) => (
               <div className="feat" key={f}>
                 <div className="n">{i + 1}</div>

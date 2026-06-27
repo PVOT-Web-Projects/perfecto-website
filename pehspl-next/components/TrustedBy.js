@@ -20,7 +20,7 @@ export default function TrustedBy() {
     >
       <div className="wrap trusted reveal">
         <span className="eyebrow">Trusted By</span>
-        <div className="logo-row">
+        <div className="logo-row reveal-stagger">
           {LOGOS.map((name, i) => (
             <div className="logo-chip" key={`${name}-${i}`}>
               {name}

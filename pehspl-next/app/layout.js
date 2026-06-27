@@ -1,4 +1,5 @@
 import './globals.css';
+import Loader from '@/components/Loader';
 import ScrollReveal from '@/components/ScrollReveal';
 
 export const metadata = {
@@ -12,6 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <Loader />
         {children}
         <ScrollReveal />
       </body>

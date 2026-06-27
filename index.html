@@ -18,7 +18,12 @@
     @font-face {
       font-family: 'Helvetica Neue';
       src: url('assets/fonts/HelveticaNeueRoman.otf') format('opentype');
-      font-weight: 500 600; font-style: normal; font-display: swap;
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Helvetica Neue';
+      src: url('assets/fonts/HelveticaNeueRoman.otf') format('opentype');
+      font-weight: 600; font-style: normal; font-display: swap;
     }
     @font-face {
       font-family: 'Helvetica Neue';
@@ -296,16 +301,34 @@
       box-shadow: 0 26px 54px -30px rgba(50,66,82,.55);
     }
 
-    /* ===== Statement band ===== */
-    .statement { text-align: center; padding: 60px 0 30px; }
-    .statement h2 {
-      font-size: clamp(24px, 4vw, 44px);
-      font-weight: 700;
-      line-height: 1.2;
-      color: #c7cdd2;
-      letter-spacing: -.01em;
+    /* ===== Statement band: sticky one-line-at-a-time reveal ===== */
+    .statement { position: relative; }
+    .statement-track { height: 150vh; position: relative; }   /* scroll length of the pinned section */
+    .statement-sticky {
+      position: sticky;
+      top: 10vh;
+      height: 80vh;                  /* takes 80% of the screen height */
+      display: grid;
+      place-items: center;
+      text-align: center;
     }
-    .statement h2 .accent { color: var(--slate); }
+    .statement-heading {
+      font-size: clamp(26px, 4.4vw, 50px);
+      font-weight: 700;
+      line-height: 1.22;
+      letter-spacing: -.01em;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .statement-heading .line {
+      color: #c7cdd2;
+      opacity: .14;                  /* ghosted until revealed */
+      transform: translateY(16px);
+      transition: opacity .4s var(--ease), transform .4s var(--ease), color .4s var(--ease);
+    }
+    .statement-heading .line.show { opacity: 1; transform: none; }
+    .statement-heading .line.accent.show { color: var(--slate); }
     .ph-box {
       margin: 44px auto 0;
       max-width: 760px;
@@ -618,6 +641,58 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
     .reveal.in { opacity: 1; transform: none; }
 
+    /* ===== Loader ===== */
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      transition: opacity .6s var(--ease), visibility .6s var(--ease);
+    }
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-inner { display: flex; flex-direction: column; align-items: center; gap: 26px; }
+    .loader-logo { height: 84px; width: auto; animation: loader-pulse 1.6s ease-in-out infinite; }
+    @keyframes loader-pulse {
+      0%, 100% { opacity: .5; transform: scale(.97); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+    .loader-bar { position: relative; width: 180px; height: 3px; background: var(--line); border-radius: 3px; overflow: hidden; }
+    .loader-bar span {
+      position: absolute; top: 0; left: -40%; height: 100%; width: 40%;
+      background: var(--slate); border-radius: 3px;
+      animation: loader-slide 1.15s ease-in-out infinite;
+    }
+    @keyframes loader-slide { 0% { left: -40%; } 100% { left: 100%; } }
+
+    /* ===== Opening intro animation (after loader) ===== */
+    .intro { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    body.loaded .intro { opacity: 1; transform: none; }
+    body.loaded .intro.d1 { transition-delay: .05s; }
+    body.loaded .intro.d2 { transition-delay: .20s; }
+    body.loaded .intro.d3 { transition-delay: .35s; }
+    body.loaded .intro.d4 { transition-delay: .50s; }
+
+    /* ===== Staggered section entrances ===== */
+    .reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+    .reveal-stagger.in > * { opacity: 1; transform: none; }
+    .reveal-stagger.in > *:nth-child(1) { transition-delay: .02s; }
+    .reveal-stagger.in > *:nth-child(2) { transition-delay: .10s; }
+    .reveal-stagger.in > *:nth-child(3) { transition-delay: .18s; }
+    .reveal-stagger.in > *:nth-child(4) { transition-delay: .26s; }
+    .reveal-stagger.in > *:nth-child(5) { transition-delay: .34s; }
+    .reveal-stagger.in > *:nth-child(6) { transition-delay: .42s; }
+    .reveal-stagger.in > *:nth-child(7) { transition-delay: .50s; }
+    .reveal-stagger.in > *:nth-child(8) { transition-delay: .58s; }
+    .reveal-stagger.in > *:nth-child(9) { transition-delay: .66s; }
+    .reveal-stagger.in > *:nth-child(10) { transition-delay: .74s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .loader-logo, .loader-bar span { animation: none; }
+      .intro, .reveal, .reveal-stagger > * { transition: none; }
+    }
+
     /* ===== Responsive ===== */
     @media (max-width: 960px) {
       .nav-links { display: none; }
@@ -639,10 +714,18 @@
 </head>
 <body>
 
+  <!-- ===== Loader ===== -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <img class="loader-logo" src="Logo.png" alt="PEHSPL" />
+      <div class="loader-bar"><span></span></div>
+    </div>
+  </div>
+
   <!-- ===== Header ===== -->
   <header>
     <div class="wrap">
-      <div class="nav">
+      <div class="nav intro d1">
       <a href="#" class="brand" aria-label="PEHSPL home">
         <img class="brand-logo" src="Logo.png" alt="PEHSPL — Perfect Engitech &amp; Healthcare Solutions" />
       </a>
@@ -665,9 +748,9 @@
     <div class="wrap">
       <div class="hero-card">
         <div class="hero-content">
-          <h1>Building Sterile Spaces Where Healing Begins</h1>
-          <p>Engineered to EU standards, trusted by 150+ hospitals across India and abroad.</p>
-          <a href="#solutions" class="btn btn-primary">Explore Our Solutions</a>
+          <h1 class="intro d2">Building Sterile Spaces Where Healing Begins</h1>
+          <p class="intro d3">Engineered to EU standards, trusted by 150+ hospitals across India and abroad.</p>
+          <a href="#solutions" class="btn btn-primary intro d4">Explore Our Solutions</a>
         </div>
       </div>
     </div>
@@ -693,10 +776,18 @@
     </div>
   </section>
 
-  <!-- ===== Statement band + scroll-driven 3D frames ===== -->
+  <!-- ===== Statement band: sticky one-line-at-a-time reveal ===== -->
   <section class="statement">
-    <div class="wrap reveal">
-      <h2>Designed for sterility<br><span class="accent">Engineered to perform</span><br>Sterile. Seamless. Certified</h2>
+    <div class="statement-track">
+      <div class="statement-sticky">
+        <div class="wrap">
+          <h2 class="statement-heading">
+            <span class="line">Designed for sterility</span>
+            <span class="line accent">Engineered to perform</span>
+            <span class="line">Sterile. Seamless. Certified</span>
+          </h2>
+        </div>
+      </div>
     </div>
     <!-- Scroll-frame scrubber (full-bleed when active). Stays a placeholder until frames are configured in SCROLL_3D below. -->
     <div class="scroll3d" id="scroll3d">
@@ -716,7 +807,7 @@
         <h2>End-to-end design, supply &amp; execution</h2>
         <p>Infection-free, sterile healthcare environments — engineered from concept to commissioning.</p>
       </div>
-      <div class="offer-track reveal">
+      <div class="offer-track reveal-stagger">
         <article class="offer-card o1">
           <div class="offer-body">
             <h3>Modular Operating Theatres</h3>
@@ -750,7 +841,7 @@
         <h2>Proven at scale, certified by results</h2>
         <p>Numbers that reflect deep expertise across hundreds of sterile healthcare environments.</p>
       </div>
-      <div class="stat-grid">
+      <div class="stat-grid reveal-stagger">
         <div class="stat">
           <div class="num">550+</div>
           <div class="lbl">Operating Theatres Completed</div>
@@ -779,7 +870,7 @@
         <h2>Why choose PEHSPL</h2>
         <p>From patented innovation to European manufacturing standards, every project is delivered with speed, precision and uncompromising quality.</p>
       </div>
-      <div class="why-list">
+      <div class="why-list reveal-stagger">
         <div class="why-item">
           <div class="why-ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg>
@@ -817,7 +908,7 @@
       <div>
         <span class="eyebrow">The PEHSPL Advantage</span>
         <h2>Plug-and-build healthcare infrastructure, one sterile space at a time</h2>
-        <div class="feat-grid">
+        <div class="feat-grid reveal-stagger">
           <div class="feat"><div class="n">1</div><p>Faster than civil construction</p></div>
           <div class="feat"><div class="n">2</div><p>Hassle-free site installation</p></div>
           <div class="feat"><div class="n">3</div><p>EU certified, USFDA compliant</p></div>
@@ -857,7 +948,7 @@
   <section id="insights" class="section-pad" style="background:var(--bg-soft);">
     <div class="wrap trusted reveal">
       <span class="eyebrow">Trusted By</span>
-      <div class="logo-row">
+      <div class="logo-row reveal-stagger">
         <div class="logo-chip">Aster</div>
         <div class="logo-chip">Apollo</div>
         <div class="logo-chip">Fortis</div>
@@ -1020,11 +1111,47 @@
     }
     initScrollFrames(SCROLL_3D);
 
-    // Scroll reveal
+    // Statement: reveal one line at a time while the section is pinned (80vh sticky).
+    (function initStatementPin() {
+      const track = document.querySelector('.statement-track');
+      if (!track) return;
+      const lines = track.querySelectorAll('.statement-heading .line');
+      const thresholds = [0.04, 0.34, 0.62];   // scroll progress at which each line appears
+      let ticking = false;
+      function update() {
+        const scrollable = track.offsetHeight - window.innerHeight;
+        const progress = scrollable > 0
+          ? Math.min(1, Math.max(0, -track.getBoundingClientRect().top / scrollable))
+          : 0;
+        lines.forEach((line, i) => line.classList.toggle('show', progress >= thresholds[i]));
+        ticking = false;
+      }
+      function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+    })();
+
+    // Scroll reveal (simple + staggered)
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+    // Loader: show for at least 2s, then reveal the site with the intro animation.
+    (function initLoader() {
+      const loader = document.getElementById('loader');
+      if (!loader) { document.body.classList.add('loaded'); return; }
+      function reveal() {
+        const wait = Math.max(0, 2000 - performance.now());
+        setTimeout(() => {
+          loader.classList.add('hidden');
+          document.body.classList.add('loaded');
+        }, wait);
+      }
+      if (document.readyState === 'complete') reveal();
+      else window.addEventListener('load', reveal, { once: true });
+    })();
 
     // Mobile menu (simple toggle of nav links visibility)
     const toggle = document.querySelector('.menu-toggle');

@@ -33,7 +33,7 @@ export default function WhyChoose() {
             quality.
           </p>
         </div>
-        <div className="why-list">
+        <div className="why-list reveal-stagger">
           {ITEMS.map((it) => (
             <div className="why-item" key={it.title}>
               <div className="why-ico">

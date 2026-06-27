@@ -21,7 +21,9 @@ export default function ScrollReveal() {
       { threshold: 0.12 }
     );
 
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    document
+      .querySelectorAll('.reveal, .reveal-stagger')
+      .forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
 

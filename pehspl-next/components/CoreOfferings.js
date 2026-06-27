@@ -28,7 +28,7 @@ export default function CoreOfferings() {
             concept to commissioning.
           </p>
         </div>
-        <div className="offer-track reveal">
+        <div className="offer-track reveal-stagger">
           {OFFERS.map((o) => (
             <article key={o.cls} className={`offer-card ${o.cls}`}>
               <div className="offer-body">
