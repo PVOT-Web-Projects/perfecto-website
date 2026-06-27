@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const NAV = [
   ['HOME', '#home'],
@@ -13,6 +13,31 @@ const NAV = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  // Hide the header once scrolled beyond the hero; show it again within the hero.
+  useEffect(() => {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    let ticking = false;
+    const update = () => {
+      setHidden(hero.getBoundingClientRect().bottom < 120);
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
 
   // When open on mobile, drop the nav links into a panel below the card.
   const dropdownStyle = open
@@ -32,7 +57,7 @@ export default function Header() {
     : undefined;
 
   return (
-    <header>
+    <header className={hidden ? 'nav-hidden' : undefined}>
       <div className="wrap">
         <div className="nav intro d1">
           <a href="#home" className="brand" aria-label="PEHSPL home">

@@ -9,24 +9,34 @@ export default function ContactCTA() {
   return (
     <section id="contact" className="cta">
       <div className="wrap cta-inner reveal">
-        <div>
+        <div className="cta-copy">
           <h2>
-            <span>Let&apos;s make a</span>
-            <span>sterile space</span>
-            <span>Together</span>
+            Let&apos;s make a
+            <br />
+            sterile
+            <br />
+            space
           </h2>
-          <p className="sub">
-            Tell us about your project. Our team will get back within one
-            business day.
-          </p>
+          <span className="cta-big">Together</span>
         </div>
+
         <form className="form" onSubmit={handleSubmit}>
-          <input type="text" placeholder="Full Name" aria-label="Full Name" required />
-          <div className="row">
-            <input type="email" placeholder="Email" aria-label="Email" required />
-            <input type="tel" placeholder="Phone" aria-label="Phone" />
+          <div className="field">
+            <input type="text" id="cta-name" placeholder=" " required />
+            <label htmlFor="cta-name">Full Name</label>
           </div>
-          <textarea placeholder="Message" aria-label="Message" />
+          <div className="field">
+            <input type="email" id="cta-email" placeholder=" " required />
+            <label htmlFor="cta-email">Email</label>
+          </div>
+          <div className="field">
+            <input type="tel" id="cta-phone" placeholder=" " />
+            <label htmlFor="cta-phone">Phone</label>
+          </div>
+          <div className="field">
+            <textarea id="cta-msg" placeholder=" " rows={1} />
+            <label htmlFor="cta-msg">Message</label>
+          </div>
           <button type="submit" className="btn btn-light">
             Submit <span className="arrow">→</span>
           </button>
