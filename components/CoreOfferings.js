@@ -8,6 +8,7 @@ const OFFERS = [
     title: 'Modular Operating Theatres',
     body: 'Self-standing, pre-engineered OT panels delivering EU-grade sterility, seamless surfaces and rapid, civil-free installation — from concept and design through supply, installation and commissioning.',
   },
+  
   {
     cls: 'o2',
     title: 'ICUs & Critical Care',
