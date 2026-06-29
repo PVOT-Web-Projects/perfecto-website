@@ -4,27 +4,27 @@
    font-weights:  400->Light, 500/600->Roman, 700->Medium, 800->Bold. */
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('/fonts/HelveticaNeueLight.otf') format('opentype');
+  src: url('../public/fonts/HelveticaNeueLight.otf') format('opentype');
   font-weight: 400; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
+  src: url('../public/fonts/HelveticaNeueRoman.otf') format('opentype');
   font-weight: 500; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
+  src: url('../public/fonts/HelveticaNeueRoman.otf') format('opentype');
   font-weight: 600; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('/fonts/HelveticaNeueMedium.otf') format('opentype');
+  src: url('../public/fonts/HelveticaNeueMedium.otf') format('opentype');
   font-weight: 700; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('/fonts/HelveticaNeueBold.otf') format('opentype');
+  src: url('../public/fonts/HelveticaNeueBold.otf') format('opentype');
   font-weight: 800; font-style: normal; font-display: swap;
 }
 
@@ -203,7 +203,7 @@ header.nav-hidden { transform: translateY(-130%); }
   box-shadow: 0 34px 64px -42px rgba(40,56,70,.45);
   background:
     linear-gradient(90deg, rgba(238,244,248,.95) 0%, rgba(238,244,248,.68) 24%, rgba(238,244,248,.22) 46%, rgba(238,244,248,0) 64%),
-    url("/hero_bg_image.png") center/cover;
+    url("../public/hero_bg_image.png") center/cover;
 }
 .hero-content {
   padding: 56px clamp(32px, 5vw, 72px);
@@ -292,7 +292,7 @@ section { scroll-margin-top: 80px; }
   overflow: hidden;
   min-height: 300px;            /* fallback height when stacked on mobile */
   border-bottom: 4px solid var(--accent);
-  background: url("/hero_bg_image.png") center/cover;
+  background: url("../public/hero_bg_image.png") center/cover;
   box-shadow: 0 26px 54px -30px rgba(50,66,82,.55);
 }
 
@@ -444,7 +444,7 @@ section { scroll-margin-top: 80px; }
   background-size: cover;
   background-position: center;
 }
-.offer-visual.o1 { background-image: url("/hero_bg_image.png"); }
+.offer-visual.o1 { background-image: url("../public/hero_bg_image.png"); }
 .offer-visual.o2 { background-image: url("https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=1400&q=80"); }
 .offer-visual.o3 { background-image: url("https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1400&q=80"); }
 .offer-overlay {
@@ -497,7 +497,7 @@ section { scroll-margin-top: 80px; }
   border-radius: var(--radius);
   overflow: hidden;
   aspect-ratio: 16 / 10;
-  background: url("/hero_bg_image.png") center/cover;
+  background: url("../public/hero_bg_image.png") center/cover;
   box-shadow: 0 24px 50px -30px rgba(50,66,82,.5);
 }
 .stat-grid { display: grid; grid-template-columns: 1fr 1fr; }
@@ -764,7 +764,7 @@ section { scroll-margin-top: 80px; }
 footer {
   color: #2b333b;
   margin: clamp(28px, 4vw, 52px);
-  background: url("/footer.png") center / 100% 100% no-repeat;
+  background: url("../public/footer.png") center / 100% 100% no-repeat;
   padding: clamp(58px, 8vh, 92px) clamp(36px, 6vw, 96px) clamp(66px, 9vh, 96px);
 }
 .foot-grid { display: flex; justify-content: space-between; gap: 60px; flex-wrap: wrap; }

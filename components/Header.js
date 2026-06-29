@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { asset } from '@/lib/assetPath';
 
 const NAV = [
   ['HOME', '#home'],
@@ -64,7 +65,7 @@ export default function Header() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="brand-logo"
-              src="/Logo.png"
+              src={asset('/Logo.png')}
               alt="PEHSPL — Perfect Engitech & Healthcare Solutions"
             />
           </a>

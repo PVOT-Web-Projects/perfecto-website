@@ -1,3 +1,5 @@
+import { asset } from '@/lib/assetPath';
+
 const COLS = [
   [
     ['About', '#about'],
@@ -33,7 +35,7 @@ export default function Footer() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="brand-logo"
-              src="/Logo.png"
+              src={asset('/Logo.png')}
               alt="PEHSPL — Perfect Engitech & Healthcare Solutions"
             />
           </a>
@@ -46,7 +48,7 @@ export default function Footer() {
             {SOCIALS.map(([label, src]) => (
               <a href="#" key={label} aria-label={label}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt={label} />
+                <img src={asset(src)} alt={label} />
               </a>
             ))}
           </div>
