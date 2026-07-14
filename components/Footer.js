@@ -41,9 +41,10 @@ export default function Footer() {
             />
           </Link>
           <p>
-            Perfect Engitech &amp; Healthcare Solutions Private Limited, in an
-            exclusive association with Nicomac Far East, was established to
-            advocate for cleanroom partitions in the healthcare sector.
+            Perfect Engitech &amp; Healthcare Solutions Private Limited
+            exclusively uses Nicomac panels, and was established to bring
+            world-class cleanroom partition technology to the healthcare
+            sector.
           </p>
           <div className="foot-social">
             {SOCIALS.map(([label, src]) => (

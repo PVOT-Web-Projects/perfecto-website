@@ -8,19 +8,19 @@ const OFFERS = [
     cls: 'o1',
     title: 'Modular Operating Theatres',
     href: '/solutions/modular-operating-theatres',
-    body: 'Self-standing, pre-engineered OT panels delivering EU-grade sterility, seamless surfaces and rapid, civil-free installation — from concept and design through supply, installation and commissioning.',
+    body: 'We design and execute modular operating theatre projects using EU-certified, USFDA-compliant Nicomac panels. Our self-standing HPL, PCGS and glass panel systems eliminate civil work delays, deliver hermetically sealed, easy-clean surfaces, and are engineered for fast-track hospital projects without compromising sterility or finish.',
   },
   {
     cls: 'o2',
-    title: 'ICUs & Critical Care',
+    title: 'ICUs',
     href: '/solutions/icus',
-    body: 'Antimicrobial, easy-clean partition systems engineered for high-acuity, infection-controlled critical care environments built to perform around the clock.',
+    body: 'Specialised cleanroom infrastructure for general ICUs, transplant units and HSCT (Hematopoietic Stem Cell Transplant) wards. We design pressure-controlled, infection-free environments with integrated HVAC, monitoring and patient-flow planning that meet the demanding hygiene standards of critical care.',
   },
   {
     cls: 'o3',
     title: 'IVF Labs',
     href: '/solutions/ivf-labs',
-    body: 'VOC-free, controlled-environment laboratories designed for embryology with precision airflow, material safety and the highest standards of contamination control.',
+    body: 'Class 10,000 cleanroom infrastructure for IVF units, including embryology labs and transfer rooms. Built to the precise air quality, temperature and contamination-control standards that protect embryo viability and lab outcomes.',
   },
 ];
 
@@ -81,8 +81,8 @@ export default function CoreOfferings() {
             <div className="core-head">
               <h2>Core Offerings</h2>
               <p>
-                End-to-end design, supply and execution of infection-free,
-                sterile healthcare environments
+                End-to-End Design and Execution of Infection-Free, Sterile
+                Healthcare Environments
               </p>
             </div>
           </div>

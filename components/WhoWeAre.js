@@ -1,9 +1,5 @@
-const HIGHLIGHTS = [
-  'Exclusive association with Nicomac Far East',
-  '550+ operating theatres delivered',
-  'EU-certified, USFDA-compliant systems',
-  'In-house design, build & execution',
-];
+import Link from 'next/link';
+import { asset } from '@/lib/assetPath';
 
 export default function WhoWeAre() {
   return (
@@ -14,38 +10,47 @@ export default function WhoWeAre() {
             <span className="who-mark" />
             Who We Are
           </h2>
+          <h3 className="who-sub">
+            India&apos;s Trusted Name in Cleanroom Healthcare Infrastructure
+          </h3>
           <p className="lead">
-            Perfect Engitech &amp; Healthcare Solutions Pvt. Ltd. (PEHSPL), in
-            exclusive association with Nicomac Far East, was established to bring
-            world-class cleanroom partition technology to the healthcare sector.
+            Perfect Engitech &amp; Healthcare Solutions Pvt. Ltd. (PEHSPL)
+            designs and executes projects for modular operation theatres, ICUs
+            and IVF labs across India, using exclusively Nicomac cleanroom
+            panels.
           </p>
           <p>
-            With over 550 operating theatres and 50 IVF labs delivered across
-            150+ hospitals in India and abroad, we bring deep expertise in OT
-            complex design, patient flow and systems integration — working
-            alongside India&apos;s leading hospital architects and consultants.
+            With over <strong>900 operating theatres</strong>,{' '}
+            <strong>450+ ICUs</strong> and <strong>50+ IVF labs</strong>{' '}
+            delivered across <strong>150+ hospitals</strong> in India and
+            abroad, our work goes far beyond panels and partitions. We bring
+            deep expertise in OT complex design, patient flow planning and
+            systems integration — collaborating closely with India&apos;s
+            leading hospital architects and consultants to deliver
+            infection-free, sterile environments that perform for decades.
           </p>
           <p>
-            From concept and design through supply, installation and
-            commissioning, we deliver turnkey infection-control environments —
-            engineered to European standards and built to perform for decades.
+            Because we use only genuine Nicomac panels, every project carries
+            the same EU-certified quality benchmark, batch after batch,
+            hospital after hospital.
           </p>
-          <ul className="who-highlights">
-            {HIGHLIGHTS.map((h) => (
-              <li key={h}>
-                <span className="hl-ico">✓</span>
-                {h}
-              </li>
-            ))}
-          </ul>
-          <a href="#about" className="text-link">
-            Know More
-          </a>
+          <div className="about-cta-actions" style={{ marginTop: 24 }}>
+            <Link href="/about" className="btn btn-primary">
+              Know More
+            </Link>
+            <a
+              href={asset('/company-profile.pdf')}
+              className="btn btn-ghost"
+              download
+            >
+              Download Company Profile
+            </a>
+          </div>
         </div>
         <div
           className="media"
           role="img"
-          aria-label="Sterile operating theatre interior"
+          aria-label="Modular operating theatre by PEHSPL built with Nicomac cleanroom panels"
         />
       </div>
     </section>

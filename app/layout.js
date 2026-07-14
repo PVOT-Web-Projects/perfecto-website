@@ -4,9 +4,20 @@ import ScrollReveal from '@/components/ScrollReveal';
 import { asset } from '@/lib/assetPath';
 
 export const metadata = {
-  title: 'PEHSPL — Building Sterile Spaces Where Healing Begins',
+  title: 'Modular OT, ICU & IVF Lab Design and Execution Company India | PEHSPL',
   description:
-    'Perfect Engitech & Healthcare Solutions Pvt. Ltd. — Engineered to EU standards, trusted by 150+ hospitals across India and abroad. Modular operating theatres, ICUs and IVF labs.',
+    'PEHSPL designs and executes projects for modular operation theatres, ICUs & IVF labs across India, exclusively using EU-certified Nicomac cleanroom panels. 900+ OTs, 450+ ICUs & 50+ IVF labs delivered to 150+ hospitals.',
+  keywords: [
+    'modular OT design and execution India',
+    'OT design company India',
+    'cleanroom panels for hospitals',
+    'Nicomac panels India',
+    'modular OT contractor',
+    'IVF lab design and execution India',
+    'ICU cleanroom infrastructure',
+    'hospital cleanroom partition systems',
+    'EU certified OT panels',
+  ],
   icons: { icon: asset('/Logo.png') },
 };
 
