@@ -1,17 +1,18 @@
+import Link from 'next/link';
 import { asset } from '@/lib/assetPath';
 
 const COLS = [
   [
-    ['About', '#about'],
-    ['Solutions', '#solutions'],
-    ['Services', '#services'],
-    ['Projects', '#projects'],
-    ['Insights', '#insights'],
+    ['About', '/about'],
+    ['Solutions', '/#solutions'],
+    ['Services', '/services'],
+    ['Projects', '/projects'],
+    ['Insights', '/insights'],
   ],
   [
-    ['Modular OT', '#solutions'],
-    ['ICUs', '#solutions'],
-    ['IVF Labs', '#solutions'],
+    ['Modular OT', '/solutions/modular-operating-theatres'],
+    ['ICUs', '/solutions/icus'],
+    ['IVF Labs', '/solutions/ivf-labs'],
   ],
   [
     ['Privacy Policy', '#'],
@@ -31,14 +32,14 @@ export default function Footer() {
     <footer>
       <div className="foot-grid">
         <div className="foot-about">
-          <a href="#home" className="brand" aria-label="PEHSPL home">
+          <Link href="/" className="brand" aria-label="PEHSPL home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="brand-logo"
               src={asset('/Logo.png')}
               alt="PEHSPL — Perfect Engitech & Healthcare Solutions"
             />
-          </a>
+          </Link>
           <p>
             Perfect Engitech &amp; Healthcare Solutions Private Limited, in an
             exclusive association with Nicomac Far East, was established to
@@ -60,7 +61,11 @@ export default function Footer() {
               <ul>
                 {col.map(([label, href]) => (
                   <li key={label}>
-                    <a href={href}>{label}</a>
+                    {href.startsWith('/') ? (
+                      <Link href={href}>{label}</Link>
+                    ) : (
+                      <a href={href}>{label}</a>
+                    )}
                   </li>
                 ))}
               </ul>

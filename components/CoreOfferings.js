@@ -1,22 +1,25 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 
 const OFFERS = [
   {
     cls: 'o1',
     title: 'Modular Operating Theatres',
+    href: '/solutions/modular-operating-theatres',
     body: 'Self-standing, pre-engineered OT panels delivering EU-grade sterility, seamless surfaces and rapid, civil-free installation — from concept and design through supply, installation and commissioning.',
   },
-  
   {
     cls: 'o2',
     title: 'ICUs & Critical Care',
+    href: '/solutions/icus',
     body: 'Antimicrobial, easy-clean partition systems engineered for high-acuity, infection-controlled critical care environments built to perform around the clock.',
   },
   {
     cls: 'o3',
     title: 'IVF Labs',
+    href: '/solutions/ivf-labs',
     body: 'VOC-free, controlled-environment laboratories designed for embryology with precision airflow, material safety and the highest standards of contamination control.',
   },
 ];
@@ -94,9 +97,9 @@ export default function CoreOfferings() {
                   <div className={`offer-visual ${o.cls}`}>
                     <div className="offer-overlay">
                       <p>{o.body}</p>
-                      <a href="#contact" className="offer-btn">
+                      <Link href={o.href} className="offer-btn">
                         Learn more
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </article>

@@ -1,13 +1,16 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 /**
- * Mounts once (in the root layout) and reveals every element carrying the
- * `.reveal` class as it scrolls into view — the App Router equivalent of the
- * original inline IntersectionObserver script.
+ * Mounted once in the root layout: reveals every `.reveal` / `.reveal-stagger`
+ * element as it scrolls into view. Re-runs on route change so newly-rendered
+ * page content (e.g. /about) is observed too.
  */
 export default function ScrollReveal() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const io = new IntersectionObserver(
       (entries) => {
@@ -25,7 +28,7 @@ export default function ScrollReveal() {
       .querySelectorAll('.reveal, .reveal-stagger')
       .forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  }, [pathname]);
 
   return null;
 }
