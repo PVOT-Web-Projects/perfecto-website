@@ -1,8 +1,8 @@
 const STATS = [
-  { num: '550+', lbl: 'Operating Theatres Completed', fill: false },
+  { num: '900+', lbl: 'Operating Theatres Completed', fill: false },
+  { num: '450+', lbl: 'ICUs Delivered', fill: false },
   { num: '50+', lbl: 'IVF Labs Delivered', fill: false },
-  { num: '150+', lbl: 'Hospitals Served in India & Abroad', fill: false },
-  { num: '300+', lbl: 'SQM Manufacturing Capacity Per Day', fill: true },
+  { num: '150+', lbl: 'Hospitals Served in India & Abroad', fill: true },
 ];
 
 export default function StatCounters() {
@@ -16,14 +16,14 @@ export default function StatCounters() {
               Stat Counters
             </h2>
             <p className="stats-sub">
-              Proven delivery at scale across hundreds of sterile healthcare
-              environments.
+              Numbers that reflect two decades of trust, precision and sterile
+              engineering.
             </p>
           </div>
           <div
             className="stats-media"
             role="img"
-            aria-label="Sterile operating theatre interior"
+            aria-label="Sterile modular operating theatre interior"
           />
         </div>
 

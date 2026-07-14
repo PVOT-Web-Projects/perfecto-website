@@ -4,9 +4,9 @@ import { useEffect, useRef } from 'react';
 import ScrollFrames from '@/components/ScrollFrames';
 
 const LINES = [
-  { text: 'Designed for sterility', accent: false },
-  { text: 'Engineered to perform', accent: true },
-  { text: 'Sterile. Seamless. Certified', accent: false },
+  { text: 'Designed for Sterility', accent: false },
+  { text: 'Engineered to Perform', accent: true },
+  { text: 'Sterile. Seamless. Certified.', accent: false },
 ];
 
 // Scroll progress at which each line appears.
@@ -65,6 +65,10 @@ export default function Statement() {
 
       {/* Scroll-frame scrubber (placeholder until frames are configured) */}
       <ScrollFrames />
+      <p className="statement-caption">
+        A closer look at our self-standing Nicomac panel system — built for
+        infection-free OT environments.
+      </p>
     </section>
   );
 }

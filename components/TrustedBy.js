@@ -1,15 +1,15 @@
 const ROWS = [
   {
     dir: 'left',
-    logos: ['Aster', 'Amrita Hospitals', 'Sakra', 'Zydus Hospitals', 'Apollo', 'Fortis', 'Manipal', 'HCG'],
+    logos: ['Aster', 'Amrita Hospitals', 'Sakra World', 'Zydus Hospitals', 'Apollo', 'Sigma', 'Manipal', 'HCG'],
   },
   {
     dir: 'right',
-    logos: ['Narayana', 'CIMS', 'Aster', 'Amrita Hospitals', 'Sakra', 'Zydus Hospitals', 'Apollo', 'Fortis'],
+    logos: ['Narayana', 'CIMS', 'AIIMS', 'Aster', 'Amrita Hospitals', 'Sakra World', 'Zydus Hospitals', 'Apollo'],
   },
   {
     dir: 'left',
-    logos: ['Manipal', 'HCG', 'Narayana', 'CIMS', 'Aster', 'Amrita Hospitals', 'Sakra', 'Zydus Hospitals'],
+    logos: ['Manipal', 'HCG', 'Narayana', 'CIMS', 'Sigma', 'AIIMS', 'Aster', 'Zydus Hospitals'],
   },
 ];
 
@@ -23,7 +23,7 @@ export default function TrustedBy() {
       <div className="wrap">
         <h2 className="who-title trusted-title reveal">
           <span className="who-mark" />
-          Trusted By
+          Trusted By India&apos;s Leading Hospital Groups
         </h2>
       </div>
       <div className="marquee-wrap reveal">
