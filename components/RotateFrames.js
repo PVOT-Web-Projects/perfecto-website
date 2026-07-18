@@ -1,0 +1,128 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+import { asset } from '@/lib/assetPath';
+
+/* =====================================================================
+   ROTATING 3D FRAME SEQUENCE (Plug-and-Build section)
+   ---------------------------------------------------------------------
+   Frames live in public/frames/rotate as 000.png ... 299.png.
+   The parent .plug-track pins the section; scroll progress through the
+   track scrubs the rotation while the left content stays in place.
+   Outside a track (e.g. stacked mobile layout), it scrubs based on the
+   element's own journey through the viewport instead.
+   ===================================================================== */
+const ROTATE = {
+  frameCount: 300,
+  path: '/frames/rotate/',
+  startIndex: 0,
+  pad: 3,
+  ext: 'png',
+};
+
+export default function RotateFrames() {
+  const wrapRef = useRef(null);
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const cfg = ROTATE;
+    const el = wrapRef.current;
+    const canvas = canvasRef.current;
+    if (!el || !canvas) return;
+
+    const track = el.closest('.plug-track');
+    const ctx = canvas.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    const url = (i) =>
+      asset(
+        `${cfg.path}${String(cfg.startIndex + i).padStart(cfg.pad, '0')}.${cfg.ext}`
+      );
+    const images = [];
+    for (let i = 0; i < cfg.frameCount; i++) {
+      const img = new Image();
+      img.src = url(i);
+      images.push(img);
+    }
+
+    const ready = (img) => img && img.complete && img.naturalWidth > 0;
+
+    function progress() {
+      if (track) {
+        const scrollable = track.offsetHeight - window.innerHeight;
+        if (scrollable > 60) {
+          return Math.min(
+            1,
+            Math.max(0, -track.getBoundingClientRect().top / scrollable)
+          );
+        }
+      }
+      // Fallback: scrub across the element's own pass through the viewport.
+      const r = el.getBoundingClientRect();
+      const total = window.innerHeight + r.height;
+      return Math.min(1, Math.max(0, (window.innerHeight - r.top) / total));
+    }
+
+    function currentIndex() {
+      return Math.min(
+        cfg.frameCount - 1,
+        Math.round(progress() * (cfg.frameCount - 1))
+      );
+    }
+
+    function draw() {
+      // Fall back to the nearest loaded frame so fast scrolling never blanks.
+      let i = currentIndex();
+      while (i > 0 && !ready(images[i])) i--;
+      const img = images[i];
+      if (!ready(img)) return;
+      const cw = canvas.width;
+      const ch = canvas.height;
+      ctx.clearRect(0, 0, cw, ch);
+      const ir = img.naturalWidth / img.naturalHeight;
+      const cr = cw / ch;
+      let w, h;
+      if (ir > cr) {
+        w = cw;
+        h = cw / ir;
+      } else {
+        h = ch;
+        w = ch * ir;
+      }
+      ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
+    }
+
+    function resize() {
+      const r = canvas.getBoundingClientRect();
+      canvas.width = Math.round(r.width * dpr);
+      canvas.height = Math.round(r.height * dpr);
+      draw();
+    }
+
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        draw();
+        ticking = false;
+      });
+    }
+
+    if (images[0]) images[0].addEventListener('load', resize, { once: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', resize);
+    resize();
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  return (
+    <div className="rotate-frames" ref={wrapRef}>
+      <canvas ref={canvasRef} aria-label="Rotating Nicomac panel system" />
+    </div>
+  );
+}
