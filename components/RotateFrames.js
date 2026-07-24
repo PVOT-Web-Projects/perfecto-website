@@ -13,7 +13,7 @@ import { asset } from '@/lib/assetPath';
    element's own journey through the viewport instead.
    ===================================================================== */
 const ROTATE = {
-  frameCount: 300,
+  frameCount: 291,
   path: '/frames/rotate/',
   startIndex: 0,
   pad: 3,

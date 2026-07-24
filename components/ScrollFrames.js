@@ -11,7 +11,7 @@ import { asset } from '@/lib/assetPath';
    ===================================================================== */
 const SCROLL_3D = {
   enabled: true,
-  frameCount: 221, // frames 028 ... 299
+  frameCount: 274, // frames 028 ... 299
   path: '/frames/3d/first_section/', // under /public (base path added via asset())
   startIndex: 0, // sequence starts at 028.png
   pad: 3, // 028.png
