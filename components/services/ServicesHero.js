@@ -7,7 +7,7 @@ export default function ServicesHero() {
         <div
           className="about-hero-card"
           style={{
-            background: `linear-gradient(90deg, rgba(18,27,36,.82) 0%, rgba(18,27,36,.5) 48%, rgba(18,27,36,.15) 100%), url(${asset('/hero_bg_image.png')}) center/cover`,
+            background: `linear-gradient(90deg, rgba(18,27,36,.82) 0%, rgba(18,27,36,.5) 48%, rgba(18,27,36,.15) 100%), url(${asset('/pages/service/Service_Banner.png')}) center/cover`,
           }}
         >
           <div className="about-hero-content">

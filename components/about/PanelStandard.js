@@ -1,3 +1,5 @@
+import { asset } from '@/lib/assetPath';
+
 export default function PanelStandard() {
   return (
     <section className="section-pad">
@@ -7,6 +9,9 @@ export default function PanelStandard() {
           className="media"
           role="img"
           aria-label="Nicomac cleanroom panels in a modular operating theatre"
+          style={{
+            background: `url(${asset('/pages/aboutus/About_Our_Panel_Standards.JPG')}) center/cover`,
+          }}
         />
 
         {/* Content on the right */}
