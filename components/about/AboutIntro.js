@@ -47,7 +47,7 @@ export default function AboutIntro() {
           role="img"
           aria-label="Modular operating theatre interior"
           style={{
-            background: `url(${asset('/2nd_section.png')}) center/cover`,
+            background: `url(${asset('/pages/aboutus/About_Who_We_Are.JPG')}) center/cover`,
             borderBottom: 0,
           }}
         />

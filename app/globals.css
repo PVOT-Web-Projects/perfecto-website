@@ -203,7 +203,7 @@ header.nav-hidden { transform: translateY(-130%); }
   box-shadow: 0 34px 64px -42px rgba(40,56,70,.45);
   background:
     linear-gradient(90deg, rgba(238,244,248,.95) 0%, rgba(238,244,248,.68) 24%, rgba(238,244,248,.22) 46%, rgba(238,244,248,0) 64%),
-    url("../public/hero_bg_image.png") center/cover;
+    url("../public/pages/home/Home_Page_Banner.JPG") center/cover;
 }
 .hero-content {
   padding: 56px clamp(32px, 5vw, 72px);
@@ -293,7 +293,7 @@ section { scroll-margin-top: 80px; }
   overflow: hidden;
   min-height: 300px;            /* fallback height when stacked on mobile */
   border-bottom: 4px solid var(--accent);
-  background: url("../public/hero_bg_image.png") center/cover;
+  background: url("../public/pages/home/Home_Who_We_Are.JPG") center/cover;
   box-shadow: 0 26px 54px -30px rgba(50,66,82,.55);
 }
 
@@ -457,9 +457,9 @@ section { scroll-margin-top: 80px; }
   background-size: cover;
   background-position: center;
 }
-.offer-visual.o1 { background-image: url("../public/hero_bg_image.png"); }
-.offer-visual.o2 { background-image: url("https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=1400&q=80"); }
-.offer-visual.o3 { background-image: url("https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1400&q=80"); }
+.offer-visual.o1 { background-image: url("../public/pages/home/Home_Core_Offerings_MOT.JPG"); }
+.offer-visual.o2 { background-image: url("../public/pages/home/Home_Core_Offerings_ICU.jpeg"); }
+.offer-visual.o3 { background-image: url("../public/pages/home/Home_Core_Offerings_IVF.jpeg"); }
 .offer-overlay {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -510,7 +510,7 @@ section { scroll-margin-top: 80px; }
   border-radius: var(--radius);
   overflow: hidden;
   aspect-ratio: 16 / 10;
-  background: url("../public/hero_bg_image.png") center/cover;
+  background: url("../public/pages/home/Home_Stats_Counter.jpeg") center/cover;
   box-shadow: 0 24px 50px -30px rgba(50,66,82,.5);
 }
 .stat-grid { display: grid; grid-template-columns: 1fr 1fr; }

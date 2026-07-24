@@ -44,7 +44,7 @@ export default function ServicesIntro() {
           role="img"
           aria-label="Sterile modular operating theatre maintained by PEHSPL"
           style={{
-            background: `url(${asset('/2nd_section.png')}) center/cover`,
+            background: `url(${asset('/pages/service/Service_Beyond_Handover.png')}) center/cover`,
             borderBottom: 0,
           }}
         />
