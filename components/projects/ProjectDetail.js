@@ -78,10 +78,38 @@ export default function ProjectDetail({ project, more }) {
               className="media"
               role="img"
               aria-label={project.name}
-              style={{ background: `url(${project.img}) center/cover` }}
+              style={{
+                background: `url(${project.gallery?.[1] || project.img}) center/cover`,
+              }}
             />
           </div>
         </section>
+
+        {/* Photo gallery */}
+        {project.gallery && project.gallery.length > 1 && (
+          <section className="section-pad" style={{ paddingTop: 0 }}>
+            <div className="wrap">
+              <div className="about-head reveal">
+                <h2 className="who-title">
+                  <span className="who-mark" />
+                  Project Gallery
+                </h2>
+              </div>
+              <div className="pd-gallery reveal-stagger">
+                {project.gallery.map((src, i) => (
+                  <div className="pd-shot" key={src}>
+                    <div
+                      className="pd-shot-img"
+                      role="img"
+                      aria-label={`${project.name} — photo ${i + 1}`}
+                      style={{ backgroundImage: `url(${src})` }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* More projects */}
         <section className="section-pad" style={{ background: 'var(--bg-soft)' }}>

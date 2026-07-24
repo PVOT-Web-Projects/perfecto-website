@@ -1321,6 +1321,21 @@ body.loaded .intro.d4 { transition-delay: .50s; }
 .pd-facts { grid-template-columns: repeat(4, 1fr); }
 .pd-facts .team-cell { min-height: 0; gap: 8px; padding: 26px; }
 .pd-more { grid-template-columns: repeat(3, 1fr); }
+.pd-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.pd-gallery .pd-shot:first-child { grid-column: 1 / -1; aspect-ratio: 21 / 9; }
+.pd-shot {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 42px -34px rgba(40,56,70,.55);
+}
+.pd-shot-img {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform .6s var(--ease);
+}
+.pd-shot:hover .pd-shot-img { transform: scale(1.05); }
 
 @media (max-width: 960px) {
   .pstats-row { grid-template-columns: repeat(2, 1fr); row-gap: 30px; }
@@ -1334,6 +1349,8 @@ body.loaded .intro.d4 { transition-delay: .50s; }
   .proj-grid { grid-template-columns: 1fr; }
   .pstats-row { grid-template-columns: 1fr 1fr; }
   .pd-facts { grid-template-columns: 1fr; }
+  .pd-gallery { grid-template-columns: 1fr; }
+  .pd-gallery .pd-shot:first-child { aspect-ratio: 16 / 10; }
 }
 
 /* ============================================================
