@@ -1,16 +1,26 @@
+import { asset } from '@/lib/assetPath';
+
+// [file, display name for alt text]
+const LOGOS = {
+  aster: ['Aster.svg', 'Aster DM Healthcare'],
+  amrita: ['Amrita.svg', 'Amrita Hospitals'],
+  sakra: ['Sakra.avif', 'Sakra World Hospital'],
+  zydus: ['Zydus.webp', 'Zydus Hospitals'],
+  apollo: ['Apollo.svg', 'Apollo Hospitals'],
+  hcg: ['HCG.png', 'HCG'],
+  cims: ['CIMS.png', 'CIMS Hospital'],
+  kd: ['KD.webp', 'KD Hospital'],
+  norvic: ['Norvic.png', 'Norvic International Hospital'],
+  sterling: ['Sterling.png', 'Sterling Hospital'],
+  dhs: ['DHS.png', 'DHS Hospital'],
+  stjohns: ['St_Johns.webp', "St. John's Medical College Hospital"],
+  akanksha: ['Akanksha.png', 'Aakansha IVF'],
+};
+
 const ROWS = [
-  {
-    dir: 'left',
-    logos: ['Aster', 'Amrita Hospitals', 'Sakra World', 'Zydus Hospitals', 'Apollo', 'Sigma', 'Manipal', 'HCG'],
-  },
-  {
-    dir: 'right',
-    logos: ['Narayana', 'CIMS', 'AIIMS', 'Aster', 'Amrita Hospitals', 'Sakra World', 'Zydus Hospitals', 'Apollo'],
-  },
-  {
-    dir: 'left',
-    logos: ['Manipal', 'HCG', 'Narayana', 'CIMS', 'Sigma', 'AIIMS', 'Aster', 'Zydus Hospitals'],
-  },
+  { dir: 'left', keys: ['aster', 'amrita', 'sakra', 'zydus', 'apollo', 'hcg', 'cims', 'kd'] },
+  { dir: 'right', keys: ['norvic', 'sterling', 'dhs', 'stjohns', 'akanksha', 'aster', 'zydus', 'apollo'] },
+  { dir: 'left', keys: ['hcg', 'amrita', 'cims', 'sakra', 'kd', 'norvic', 'sterling', 'dhs'] },
 ];
 
 export default function TrustedBy() {
@@ -31,11 +41,19 @@ export default function TrustedBy() {
           <div className={`marquee${row.dir === 'right' ? ' right' : ''}`} key={r}>
             <div className="marquee-track">
               {/* rendered twice so the scroll loops seamlessly */}
-              {[...row.logos, ...row.logos].map((name, k) => (
-                <div className="logo-chip" key={`${name}-${k}`}>
-                  {name}
-                </div>
-              ))}
+              {[...row.keys, ...row.keys].map((key, k) => {
+                const [file, name] = LOGOS[key];
+                return (
+                  <div className="logo-chip" key={`${key}-${k}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={asset(`/clients_logo/${file}`)}
+                      alt={`${name} — sterile healthcare spaces by PEHSPL`}
+                      loading="lazy"
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         ))}
