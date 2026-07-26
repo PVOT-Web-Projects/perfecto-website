@@ -1,6 +1,7 @@
 import { asset } from '@/lib/assetPath';
 
-// [file, display name for alt text]
+// [file, display name for alt text, dark?] — dark: true renders the chip in
+// slate for pure-white logos that would vanish on a white background.
 const LOGOS = {
   aster: ['Aster.svg', 'Aster DM Healthcare'],
   amrita: ['Amrita.svg', 'Amrita Hospitals'],
@@ -10,7 +11,7 @@ const LOGOS = {
   hcg: ['HCG.png', 'HCG'],
   cims: ['CIMS.png', 'CIMS Hospital'],
   kd: ['KD.webp', 'KD Hospital'],
-  norvic: ['Norvic.png', 'Norvic International Hospital'],
+  norvic: ['Norvic.png', 'Norvic International Hospital', true],
   sterling: ['Sterling.png', 'Sterling Hospital'],
   dhs: ['DHS.png', 'DHS Hospital'],
   stjohns: ['St_Johns.webp', "St. John's Medical College Hospital"],
@@ -42,9 +43,9 @@ export default function TrustedBy() {
             <div className="marquee-track">
               {/* rendered twice so the scroll loops seamlessly */}
               {[...row.keys, ...row.keys].map((key, k) => {
-                const [file, name] = LOGOS[key];
+                const [file, name, dark] = LOGOS[key];
                 return (
-                  <div className="logo-chip" key={`${key}-${k}`}>
+                  <div className={`logo-chip${dark ? ' dark' : ''}`} key={`${key}-${k}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={asset(`/clients_logo/${file}`)}
