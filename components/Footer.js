@@ -14,10 +14,6 @@ const COLS = [
     ['ICUs', '/solutions/icus'],
     ['IVF Labs', '/solutions/ivf-labs'],
   ],
-  [
-    ['Privacy Policy', '#'],
-    ['Terms & Conditions', '#'],
-  ],
 ];
 
 const SOCIALS = [
@@ -42,7 +38,7 @@ export default function Footer() {
           </Link>
           <p>
             Perfect Engitech &amp; Healthcare Solutions Private Limited
-            exclusively uses Nicomac panels, and was established to bring
+            exclusively uses cleanroom panels, and was established to bring
             world-class cleanroom partition technology to the healthcare
             sector.
           </p>
@@ -73,6 +69,22 @@ export default function Footer() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="foot-bottom">
+        <span>
+          © 2026 Perfect Engitech &amp; Healthcare Solutions Pvt. Ltd. All
+          rights reserved.
+        </span>
+        <a
+          href="https://pvotdesigns.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="PVOT Designs"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="foot-credit" src={asset('/pvot_logo.png')} alt="PVOT Designs" />
+        </a>
       </div>
     </footer>
   );

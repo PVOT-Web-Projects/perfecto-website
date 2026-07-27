@@ -833,6 +833,21 @@ footer {
 .foot-col ul li { margin-bottom: 14px; }
 .foot-col ul li a { font-size: 16px; color: #3a444d; transition: color .2s var(--ease); }
 .foot-col ul li a:hover { color: var(--slate); }
+.foot-bottom {
+  margin-top: 44px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(0,0,0,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.foot-credit { height: 22px; width: auto; opacity: .85; transition: opacity .2s var(--ease), transform .2s var(--ease); }
+a:hover > .foot-credit { opacity: 1; transform: translateY(-1px); }
 @media (max-width: 700px) {
   footer {
     background: linear-gradient(160deg, #fbfbfb 0%, #ececec 100%);
@@ -975,7 +990,7 @@ body.loaded .intro.d4 { transition-delay: .50s; }
 /* --- Stats band (reuses .stat visuals) --- */
 .about-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
 
-/* --- Nicomac slider --- */
+/* --- Panel benefits slider --- */
 .nico-viewport {
   display: flex; gap: 24px; overflow-x: auto;
   scroll-snap-type: x mandatory; scroll-behavior: smooth;

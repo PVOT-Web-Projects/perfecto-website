@@ -16,8 +16,8 @@ export default function AboutHero() {
               Engineering Trust, One Sterile Space at a Time
             </h1>
             <p className="intro d3">
-              Two decades of cleanroom expertise, backed by Nicomac&apos;s global
-              technology and India&apos;s largest dedicated installation expertise.
+              Two decades of cleanroom expertise, backed by global technology
+              and India&apos;s largest dedicated installation expertise.
             </p>
           </div>
         </div>

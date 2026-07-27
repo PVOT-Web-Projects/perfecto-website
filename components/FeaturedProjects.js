@@ -25,7 +25,7 @@ export default function FeaturedProjects() {
             </h2>
             <p className="feat-sub">
               From Zydus Hospitals and AIIMS (Amrita Hospitals) to Aster DM
-              Group and HCG — explore how PEHSPL&apos;s Nicomac-engineered
+              Group and HCG — explore how PEHSPL&apos;s engineered
               operating theatres, ICUs and IVF labs are performing inside
               India&apos;s leading hospitals.
             </p>

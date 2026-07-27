@@ -61,7 +61,7 @@ export default function ProjectDetail({ project, more }) {
               <p className="lead">{project.scope}</p>
               <p>
                 Delivered end-to-end by PEHSPL&apos;s in-house team using
-                EU-certified Nicomac panel systems — from design and
+                EU-certified cleanroom panel systems — from design and
                 patient-flow planning through installation, systems integration
                 and validated handover.
               </p>

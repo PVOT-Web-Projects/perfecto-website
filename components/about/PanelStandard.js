@@ -8,7 +8,7 @@ export default function PanelStandard() {
         <div
           className="media"
           role="img"
-          aria-label="Nicomac cleanroom panels in a modular operating theatre"
+          aria-label="Cleanroom panels in a modular operating theatre"
           style={{
             background: `url(${asset('/pages/aboutus/About_Our_Panel_Standards.JPG')}) center/cover`,
           }}
@@ -21,9 +21,10 @@ export default function PanelStandard() {
             Our Panel Standard
           </h2>
           <p className="lead">
-            Nicomac manufactures the panels, while PEHSPL owns the entire design
-            and execution process — from OT complex planning and patient-flow
-            design to on-site installation by our in-house team.
+            Panels are manufactured by certified manufacturers, while PEHSPL
+            owns the entire design and execution process — from OT complex
+            planning and patient-flow design to on-site installation by our
+            in-house team.
           </p>
           <p>
             This gives hospitals EU-certified panel technology, backed by local
@@ -32,8 +33,11 @@ export default function PanelStandard() {
 
           <div className="panel-roles">
             <div className="panel-role">
-              <span className="pr-label">Nicomac</span>
-              <p>Manufactures the EU-certified cleanroom panel technology.</p>
+              <span className="pr-label">Manufacturers</span>
+              <p>
+                Certified manufacturers produce the EU-certified cleanroom
+                panel technology.
+              </p>
             </div>
             <div className="panel-role">
               <span className="pr-label">PEHSPL</span>

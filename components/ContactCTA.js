@@ -32,7 +32,7 @@ export default function ContactCTA() {
           <span className="cta-big">Together</span>
           <p className="sub" style={{ marginTop: 26 }}>
             Planning a new OT, ICU or IVF lab? Talk to PEHSPL&apos;s team about
-            EU-certified, Nicomac-engineered cleanroom infrastructure for your
+            EU-certified, engineered cleanroom infrastructure for your
             hospital.
           </p>
         </div>

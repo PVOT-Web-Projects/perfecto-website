@@ -1,7 +1,7 @@
 const ITEMS = [
   {
     title: 'Continuous Innovation',
-    body: '2 patents and 9 new panel profiles developed in the last 3 years, with ongoing R&D in materials and systems to keep our Nicomac-based offering ahead of evolving infection-control standards.',
+    body: '2 patents and 9 new panel profiles developed in the last 3 years, with ongoing R&D in materials and systems to keep our offering ahead of evolving infection-control standards.',
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -19,7 +19,7 @@ const ITEMS = [
   },
   {
     title: 'Speed Without Compromise',
-    body: 'Expertise in fast-track hospital projects with strict timelines. Self-standing Nicomac panels eliminate civil work delays, letting OTs, ICUs and IVF labs go live faster without cutting corners on sterility.',
+    body: 'Expertise in fast-track hospital projects with strict timelines. Self-standing cleanroom panels eliminate civil work delays, letting OTs, ICUs and IVF labs go live faster without cutting corners on sterility.',
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -35,8 +35,8 @@ const ITEMS = [
     ),
   },
   {
-    title: 'Genuine Nicomac Panels, EU-Certified Quality',
-    body: 'From design to execution, we use only genuine, EU-certified, USFDA-compliant Nicomac panels — never substitutes or look-alikes — so every OT, ICU and IVF lab we deliver carries the same internationally certified quality benchmark, project after project.',
+    title: 'Genuine Cleanroom Panels, EU-Certified Quality',
+    body: 'From design to execution, we use only genuine, EU-certified, USFDA-compliant panels — never substitutes or look-alikes — so every OT, ICU and IVF lab we deliver carries the same internationally certified quality benchmark, project after project.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
         <circle cx="12" cy="12" r="9" />
@@ -61,16 +61,16 @@ export default function WhyChoose() {
               Why Choose PEHSPL
             </h2>
             <h3 className="who-sub" style={{ marginTop: 26 }}>
-              Built on Nicomac Technology. Backed by Indian Engineering
+              Built on latest technology. Backed by Indian Engineering
               Expertise.
             </h3>
           </div>
           <div>
             <p>
-              PEHSPL exclusively uses Nicomac cleanroom panels, combining
-              globally proven panel technology with pan-India design and
-              execution scale, fast-track delivery and dedicated after-sales
-              support — so hospitals get EU quality without the EU lead time.
+              PEHSPL exclusively uses cleanroom panels, combining globally
+              proven panel technology with pan-India design and execution
+              scale, fast-track delivery and dedicated after-sales support —
+              so hospitals get EU quality without the EU lead time.
             </p>
             <a
               href="#contact"
