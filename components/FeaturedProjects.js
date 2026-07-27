@@ -30,7 +30,11 @@ export default function FeaturedProjects() {
               India&apos;s leading hospitals.
             </p>
           </div>
-          <a href={asset('/company-profile.pdf')} className="btn btn-ghost" download>
+          <a
+            href={asset('/company-profile.pdf')}
+            className="btn btn-ghost"
+            download="PEHSPL-Company-Profile.pdf"
+          >
             Download Company Profile
           </a>
         </div>

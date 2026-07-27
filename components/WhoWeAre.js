@@ -40,7 +40,7 @@ export default function WhoWeAre() {
             <a
               href={asset('/company-profile.pdf')}
               className="btn btn-ghost"
-              download
+              download="PEHSPL-Company-Profile.pdf"
             >
               Download Company Profile
             </a>
