@@ -66,7 +66,7 @@ export default function Statement() {
       {/* Scroll-frame scrubber (placeholder until frames are configured) */}
       <ScrollFrames />
       <p className="statement-caption">
-        A closer look at our self-standing Nicomac panel system — built for
+        A closer look at our self-standing panel system — built for
         infection-free OT environments.
       </p>
     </section>

@@ -3,7 +3,7 @@ import RotateFrames from '@/components/RotateFrames';
 const FEATURES = [
   {
     title: 'Faster than Civil Construction',
-    body: 'Self-standing Nicomac panel systems cut project timelines compared to conventional civil build-outs.',
+    body: 'Self-standing cleanroom panel systems cut project timelines compared to conventional civil build-outs.',
   },
   {
     title: 'Hassle-Free Site Installation',
@@ -11,7 +11,7 @@ const FEATURES = [
   },
   {
     title: 'EU Certified, USFDA Compliant',
-    body: 'Every Nicomac panel meets international cleanroom and fire-safety certification standards.',
+    body: 'Every panel meets international cleanroom and fire-safety certification standards.',
   },
   {
     title: 'Infection-Free, Easy-Clean Surfaces',

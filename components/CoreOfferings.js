@@ -8,7 +8,7 @@ const OFFERS = [
     cls: 'o1',
     title: 'Modular Operating Theatres',
     href: '/solutions/modular-operating-theatres',
-    body: 'We design and execute modular operating theatre projects using EU-certified, USFDA-compliant Nicomac panels. Our self-standing HPL, PCGS and glass panel systems eliminate civil work delays, deliver hermetically sealed, easy-clean surfaces, and are engineered for fast-track hospital projects without compromising sterility or finish.',
+    body: 'We design and execute modular operating theatre projects using EU-certified, USFDA-compliant panels. Our self-standing HPL, PCGS and glass panel systems eliminate civil work delays, deliver hermetically sealed, easy-clean surfaces, and are engineered for fast-track hospital projects without compromising sterility or finish.',
   },
   {
     cls: 'o2',

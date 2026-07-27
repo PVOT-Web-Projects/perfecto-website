@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 const BENEFITS = [
   {
     title: 'EU-Certified Sterility',
-    body: "Nicomac's EU-manufactured panels consistently meet the sterility benchmarks our projects demand.",
+    body: 'EU-manufactured panel technology consistently meets the sterility benchmarks our projects demand.',
     icon: (
       <>
         <path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z" />
@@ -65,7 +65,7 @@ const BENEFITS = [
   },
 ];
 
-export default function NicomacSlider() {
+export default function PanelSlider() {
   const trackRef = useRef(null);
   const [active, setActive] = useState(0);
 
@@ -121,7 +121,7 @@ export default function NicomacSlider() {
         <div className="about-head reveal">
           <h2 className="who-title">
             <span className="who-mark" />
-            Why We Use Nicomac Panels — Exclusively
+            Why We Use Cleanroom Panels — Exclusively
           </h2>
           <p>
             By standardizing on a single, proven EU-manufactured system, PEHSPL

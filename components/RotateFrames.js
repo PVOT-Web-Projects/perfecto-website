@@ -122,7 +122,7 @@ export default function RotateFrames() {
 
   return (
     <div className="rotate-frames" ref={wrapRef}>
-      <canvas ref={canvasRef} aria-label="Rotating Nicomac panel system" />
+      <canvas ref={canvasRef} aria-label="Rotating cleanroom panel system" />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { asset } from '@/lib/assetPath';
 
 const HIGHLIGHTS = [
-  'Exclusive Nicomac EU-certified panels',
+  'Exclusive EU-certified cleanroom panels',
   'Modular OTs, ICUs & IVF labs',
   'Zero civil-work dependency',
   'In-house design & installation',
@@ -19,7 +19,7 @@ export default function AboutIntro() {
           <p className="lead">
             Perfect Engitech &amp; Healthcare Solutions Pvt. Ltd. (PEHSPL) was
             established to bring world-class cleanroom partition technology to
-            India&apos;s healthcare sector. We exclusively use Nicomac panels,
+            India&apos;s healthcare sector. We exclusively use cleanroom panels,
             ensuring every project is built on a single, EU-certified panel
             system from end to end.
           </p>

@@ -7,9 +7,9 @@ export default function Hero() {
             <h1 className="intro d2">Building Sterile Spaces Where Healing Begins</h1>
             <p className="intro d3">
               We design and execute projects for modular operation theatres,
-              ICUs and IVF labs — built exclusively with Nicomac cleanroom
-              panels, engineered to EU standards and trusted by 150+ hospitals
-              across India and abroad.
+              ICUs and IVF labs — built exclusively with cleanroom panels,
+              engineered to EU standards and trusted by 150+ hospitals across
+              India and abroad.
             </p>
             <div className="about-cta-actions intro d4" style={{ marginTop: 0 }}>
               <a href="#solutions" className="btn btn-primary">

@@ -16,8 +16,7 @@ export default function WhoWeAre() {
           <p className="lead">
             Perfect Engitech &amp; Healthcare Solutions Pvt. Ltd. (PEHSPL)
             designs and executes projects for modular operation theatres, ICUs
-            and IVF labs across India, using exclusively Nicomac cleanroom
-            panels.
+            and IVF labs across India, using exclusive cleanroom panels.
           </p>
           <p>
             With over <strong>900 operating theatres</strong>,{' '}
@@ -30,7 +29,7 @@ export default function WhoWeAre() {
             infection-free, sterile environments that perform for decades.
           </p>
           <p>
-            Because we use only genuine Nicomac panels, every project carries
+            Because we use only genuine panels, every project carries
             the same EU-certified quality benchmark, batch after batch,
             hospital after hospital.
           </p>
@@ -50,7 +49,7 @@ export default function WhoWeAre() {
         <div
           className="media"
           role="img"
-          aria-label="Modular operating theatre by PEHSPL built with Nicomac cleanroom panels"
+          aria-label="Modular operating theatre by PEHSPL built with cleanroom panels"
         />
       </div>
     </section>

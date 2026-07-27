@@ -42,7 +42,7 @@ export default function Footer() {
           </Link>
           <p>
             Perfect Engitech &amp; Healthcare Solutions Private Limited
-            exclusively uses Nicomac panels, and was established to bring
+            exclusively uses cleanroom panels, and was established to bring
             world-class cleanroom partition technology to the healthcare
             sector.
           </p>
@@ -73,6 +73,11 @@ export default function Footer() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="foot-bottom">
+        © 2026 Perfect Engitech &amp; Healthcare Solutions Pvt. Ltd. All rights
+        reserved.
       </div>
     </footer>
   );
