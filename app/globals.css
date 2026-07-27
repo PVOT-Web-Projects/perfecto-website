@@ -837,10 +837,17 @@ footer {
   margin-top: 44px;
   padding-top: 22px;
   border-top: 1px solid rgba(0,0,0,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
   text-align: center;
   font-size: 13.5px;
   color: var(--muted);
 }
+.foot-credit { height: 22px; width: auto; opacity: .85; transition: opacity .2s var(--ease), transform .2s var(--ease); }
+a:hover > .foot-credit { opacity: 1; transform: translateY(-1px); }
 @media (max-width: 700px) {
   footer {
     background: linear-gradient(160deg, #fbfbfb 0%, #ececec 100%);

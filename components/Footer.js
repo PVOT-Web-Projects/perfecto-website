@@ -14,10 +14,6 @@ const COLS = [
     ['ICUs', '/solutions/icus'],
     ['IVF Labs', '/solutions/ivf-labs'],
   ],
-  [
-    ['Privacy Policy', '#'],
-    ['Terms & Conditions', '#'],
-  ],
 ];
 
 const SOCIALS = [
@@ -76,8 +72,19 @@ export default function Footer() {
       </div>
 
       <div className="foot-bottom">
-        © 2026 Perfect Engitech &amp; Healthcare Solutions Pvt. Ltd. All rights
-        reserved.
+        <span>
+          © 2026 Perfect Engitech &amp; Healthcare Solutions Pvt. Ltd. All
+          rights reserved.
+        </span>
+        <a
+          href="https://pvotdesigns.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="PVOT Designs"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="foot-credit" src={asset('/pvot_logo.png')} alt="PVOT Designs" />
+        </a>
       </div>
     </footer>
   );
