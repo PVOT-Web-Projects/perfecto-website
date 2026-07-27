@@ -122,7 +122,7 @@ export default function ContactCTA() {
               <a
                 href={asset('/company-profile.pdf')}
                 className="btn btn-light"
-                download
+                download="PEHSPL-Company-Profile.pdf"
               >
                 Download Profile (PDF) <span className="arrow">→</span>
               </a>
