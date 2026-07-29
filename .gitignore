@@ -21,6 +21,11 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
+email-api/.env
+email-api/node_modules
+email-api/.vercel
+email-api/php/config.php
 
 # vercel
 .vercel
