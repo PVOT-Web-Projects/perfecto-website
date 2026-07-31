@@ -13,9 +13,9 @@ const SCROLL_3D = {
   enabled: true,
   frameCount: 274, // frames 028 ... 299
   path: '/frames/3d/first_section/', // under /public (base path added via asset())
-  startIndex: 0, // sequence starts at 028.png
-  pad: 3, // 028.png
-  ext: 'png',
+  startIndex: 0, // sequence starts at 028.webp
+  pad: 3, // 028.webp
+  ext: 'webp',
   scrollHeightVh: 320, // scrub distance; larger = slower
 };
 
@@ -39,12 +39,38 @@ export default function ScrollFrames() {
       asset(
         `${cfg.path}${String(cfg.startIndex + i).padStart(cfg.pad, '0')}.${cfg.ext}`
       );
-    const images = [];
-    for (let i = 0; i < cfg.frameCount; i++) {
-      const img = new Image();
-      img.src = url(i);
-      images.push(img);
+    // Frames load in coarse-to-fine waves (every 16th, every 4th, all) so
+    // scrubbing works after a handful of files; draw() falls back to the
+    // nearest loaded frame until the gaps fill in.
+    const images = new Array(cfg.frameCount).fill(null);
+    let disposed = false;
+
+    function loadFrames(indices, next) {
+      let pending = 0;
+      const settle = () => {
+        if (--pending === 0 && !disposed) {
+          draw();
+          if (next) next();
+        }
+      };
+      indices.forEach((i) => {
+        if (images[i]) return;
+        const img = new Image();
+        images[i] = img;
+        pending++;
+        img.onload = i === 0 ? () => { resize(); settle(); } : settle;
+        img.onerror = settle;
+        img.src = url(i);
+      });
+      if (pending === 0 && next) next();
     }
+    const every = (step) => {
+      const list = [];
+      for (let i = 0; i < cfg.frameCount; i += step) list.push(i);
+      list.push(cfg.frameCount - 1);
+      return list;
+    };
+    loadFrames(every(16), () => loadFrames(every(4), () => loadFrames(every(1))));
 
     const ready = (img) => img && img.complete && img.naturalWidth > 0;
 
@@ -99,13 +125,12 @@ export default function ScrollFrames() {
       });
     }
 
-    // Draw the first frame as soon as it loads so there's no blank flash.
-    if (images[0]) images[0].addEventListener('load', resize, { once: true });
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', resize);
     resize();
 
     return () => {
+      disposed = true;
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', resize);
     };

@@ -26,6 +26,7 @@ email-api/.env
 email-api/node_modules
 email-api/.vercel
 email-api/php/config.php
+pehspl-site-cpanel.zip
 
 # vercel
 .vercel
