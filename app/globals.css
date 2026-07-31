@@ -293,7 +293,7 @@ section { scroll-margin-top: 80px; }
   overflow: hidden;
   min-height: 300px;            /* fallback height when stacked on mobile */
   border-bottom: 4px solid var(--accent);
-  background: url("../public/pages/home/Home_Who_We_Are.JPG") center/cover;
+  background: url("../public/pages/Stavya1.jpeg") center/cover;
   box-shadow: 0 26px 54px -30px rgba(50,66,82,.55);
 }
 
@@ -776,6 +776,11 @@ section { scroll-margin-top: 80px; }
 .cta-tab:hover { border-color: #fff; color: #fff; }
 .cta-tab.active { background: #fff; border-color: #fff; color: var(--slate-deep); }
 .cta-panel-note { color: rgba(255,255,255,.85); font-size: 15.5px; line-height: 1.7; margin-bottom: 24px; max-width: 480px; }
+.form-success { color: #fff; }
+.form-success h3 { font-size: 22px; font-weight: 600; margin-bottom: 10px; }
+.form-success p { color: rgba(255,255,255,.82); font-size: 15.5px; line-height: 1.7; margin-bottom: 24px; }
+.form-error { color: #ffd9c7; font-size: 14px; line-height: 1.5; }
+.btn:disabled { opacity: .6; cursor: default; transform: none; }
 
 .form { display: flex; flex-direction: column; gap: 30px; }
 .field { position: relative; }

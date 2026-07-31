@@ -22,7 +22,7 @@ export default function ProjectsPage() {
             <div
               className="about-hero-card"
               style={{
-                background: `linear-gradient(90deg, rgba(18,27,36,.82) 0%, rgba(18,27,36,.5) 48%, rgba(18,27,36,.15) 100%), url(${asset('/2nd_section.png')}) center/cover`,
+                background: `linear-gradient(90deg, rgba(18,27,36,.82) 0%, rgba(18,27,36,.5) 48%, rgba(18,27,36,.15) 100%), url(${asset('/pages/projects_hero.jpeg')}) center/cover`,
               }}
             >
               <div className="about-hero-content">

@@ -17,7 +17,7 @@ const ROTATE = {
   path: '/frames/rotate/',
   startIndex: 0,
   pad: 3,
-  ext: 'png',
+  ext: 'webp',
 };
 
 export default function RotateFrames() {
@@ -38,12 +38,39 @@ export default function RotateFrames() {
       asset(
         `${cfg.path}${String(cfg.startIndex + i).padStart(cfg.pad, '0')}.${cfg.ext}`
       );
-    const images = [];
-    for (let i = 0; i < cfg.frameCount; i++) {
-      const img = new Image();
-      img.src = url(i);
-      images.push(img);
+    // Frames load in coarse-to-fine waves, and only once the visitor gets
+    // near this section (see the IntersectionObserver below) so they don't
+    // compete with the hero/first-section downloads on page load.
+    const images = new Array(cfg.frameCount).fill(null);
+    let disposed = false;
+
+    function loadFrames(indices, next) {
+      let pending = 0;
+      const settle = () => {
+        if (--pending === 0 && !disposed) {
+          draw();
+          if (next) next();
+        }
+      };
+      indices.forEach((i) => {
+        if (images[i]) return;
+        const img = new Image();
+        images[i] = img;
+        pending++;
+        img.onload = i === 0 ? () => { resize(); settle(); } : settle;
+        img.onerror = settle;
+        img.src = url(i);
+      });
+      if (pending === 0 && next) next();
     }
+    const every = (step) => {
+      const list = [];
+      for (let i = 0; i < cfg.frameCount; i += step) list.push(i);
+      list.push(cfg.frameCount - 1);
+      return list;
+    };
+    const startLoading = () =>
+      loadFrames(every(16), () => loadFrames(every(4), () => loadFrames(every(1))));
 
     const ready = (img) => img && img.complete && img.naturalWidth > 0;
 
@@ -109,12 +136,31 @@ export default function RotateFrames() {
       });
     }
 
-    if (images[0]) images[0].addEventListener('load', resize, { once: true });
+    // Kick off frame downloads when the section is within ~1.5 viewports.
+    let io = null;
+    if ('IntersectionObserver' in window) {
+      io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            io.disconnect();
+            io = null;
+            startLoading();
+          }
+        },
+        { rootMargin: '150% 0%' }
+      );
+      io.observe(track || el);
+    } else {
+      startLoading();
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', resize);
     resize();
 
     return () => {
+      disposed = true;
+      if (io) io.disconnect();
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', resize);
     };

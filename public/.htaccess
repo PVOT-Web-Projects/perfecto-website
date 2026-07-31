@@ -1,0 +1,13 @@
+# Apache config for cPanel hosting (ignored by GitHub Pages).
+ErrorDocument 404 /404.html
+Options -Indexes
+
+# Long-lived caching for Next's hashed build assets.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2?|ttf|otf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(webp|avif|png|jpe?g|svg|gif|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>

@@ -1,0 +1,14 @@
+{
+  "name": "pehspl-email-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serverless email endpoint for the PEHSPL website contact forms (Brevo SMTP).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.13"
+  }
+}
