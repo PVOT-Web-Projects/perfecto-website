@@ -126,9 +126,9 @@ export default function Header() {
             <Link href="/projects" onClick={closeAll}>
               PROJECTS
             </Link>
-            <Link href="/insights" onClick={closeAll}>
-              INSIGHTS
-            </Link>
+            // <Link href="/insights" onClick={closeAll}>
+            //   INSIGHTS
+            // </Link>
           </nav>
 
           <Link href="/#contact" className="nav-cta">
