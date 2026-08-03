@@ -7,7 +7,7 @@ import { CONTACT_ENDPOINT, CONTACT_TO, CONTACT_CC } from '@/lib/siteConfig';
 const TABS = [
   ['contact', 'Contact Us'],
   ['consult', 'Request Consultation'],
-  ['schedule', 'Schedule a Discussion'],
+  // ['schedule', 'Schedule a Discussion'],
   ['profile', 'Download Company Profile'],
 ];
 
