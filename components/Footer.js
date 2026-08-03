@@ -4,7 +4,7 @@ import { asset } from '@/lib/assetPath';
 const COLS = [
   [
     ['About', '/about'],
-    ['Solutions', '/#solutions'],
+    // ['Solutions', '/#solutions'],
     ['Services', '/services'],
     ['Projects', '/projects'],
     ['Insights', '/insights'],
