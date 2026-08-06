@@ -7,7 +7,7 @@ const COLS = [
     // ['Solutions', '/#solutions'],
     ['Services', '/services'],
     ['Projects', '/projects'],
-    ['Insights', '/insights'],
+    // ['Insights', '/insights'],
   ],
   [
     ['Modular OT', '/solutions/modular-operating-theatres'],
