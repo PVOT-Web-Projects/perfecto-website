@@ -5,16 +5,8 @@ import { SERVICES } from '@/lib/servicesData';
 
 export default function ServicesAccordion() {
   const [open, setOpen] = useState(0); // first service expanded by default
-  const [mediaIdx, setMediaIdx] = useState(0); // image shown in the sticky panel
 
-  const toggle = (i) => {
-    if (i === open) {
-      setOpen(-1); // collapse; keep showing the last image
-      return;
-    }
-    setOpen(i);
-    setMediaIdx(i);
-  };
+  const toggle = (i) => setOpen(i === open ? -1 : i);
 
   return (
     <section className="section-pad">
@@ -67,15 +59,12 @@ export default function ServicesAccordion() {
             ))}
           </div>
 
-          {/* Sticky crossfading image (desktop) */}
+          {/* Sticky image (desktop) — static overview illustration */}
           <div className="svc-media" aria-hidden="true">
-            {SERVICES.map((s, i) => (
-              <div
-                key={s.title}
-                className={`svc-media-img${mediaIdx === i ? ' active' : ''}`}
-                style={{ backgroundImage: `url(${s.img})` }}
-              />
-            ))}
+            <div
+              className="svc-media-img active"
+              style={{ backgroundImage: `url(${SERVICES[0].img})` }}
+            />
           </div>
         </div>
       </div>
