@@ -52,6 +52,28 @@ export default function Footer() {
           </div>
         </div>
 
+        <div className="foot-contact">
+          <div className="foot-contact-item">
+            <span className="foot-contact-lbl">Email</span>
+            <a href="mailto:info@pehspl.co.in">info@pehspl.co.in</a>
+          </div>
+          <div className="foot-contact-item">
+            <span className="foot-contact-lbl">Contact Number</span>
+            <a href="tel:+917940192417">079-40192417</a>
+          </div>
+          <div className="foot-contact-item">
+            <span className="foot-contact-lbl">Address</span>
+            <a
+              href="https://maps.google.com/?q=Elanza+Crest,+Sindhu+Bhavan+Road,+Bodakdev,+Ahmedabad,+Gujarat+380059"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              C-003/004, Elanza Crest, Sindhu Bhavan Road, behind Rajpath
+              Rangoli Road, Bodakdev, Ahmedabad, Gujarat 380059
+            </a>
+          </div>
+        </div>
+
         <div className="foot-links">
           {COLS.map((col, c) => (
             <div className="foot-col" key={c}>
