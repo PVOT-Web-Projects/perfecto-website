@@ -549,6 +549,8 @@ section { scroll-margin-top: 80px; }
 .why-left .who-title { align-items: flex-start; margin-bottom: 0; }
 .why-left .who-mark { margin-top: 6px; }
 .why-left p { color: var(--muted); font-size: 16.5px; line-height: 1.7; max-width: 400px; }
+.why-mid h4 { font-size: clamp(17px, 1.9vw, 21px); font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 14px; }
+.why-mid p + p { margin-top: 14px; }
 
 .why-list { position: relative; padding-left: 44px; }
 .why-list::before {                         /* vertical line (draws top -> bottom) */
@@ -834,6 +836,12 @@ footer {
 .foot-social a { display: inline-flex; }
 .foot-social img { width: 22px; height: 22px; object-fit: contain; opacity: .8; transition: opacity .2s var(--ease); }
 .foot-social a:hover img { opacity: 1; }
+.foot-contact { flex: 1 1 300px; max-width: 380px; }
+.foot-contact-item { margin-bottom: 18px; }
+.foot-contact-item:last-child { margin-bottom: 0; }
+.foot-contact-lbl { display: block; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 5px; }
+.foot-contact-item a { font-size: 15px; line-height: 1.7; color: #3a444d; transition: color .2s var(--ease); }
+.foot-contact-item a:hover { color: var(--slate); }
 .foot-links { display: flex; gap: clamp(36px, 5vw, 80px); flex-wrap: wrap; }
 .foot-col ul li { margin-bottom: 14px; }
 .foot-col ul li a { font-size: 16px; color: #3a444d; transition: color .2s var(--ease); }

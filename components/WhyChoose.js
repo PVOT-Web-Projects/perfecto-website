@@ -65,6 +65,24 @@ export default function WhyChoose() {
               Expertise.
             </h3>
           </div>
+          <div className="why-mid">
+            <h4>Built for Healthcare. Engineered for Confidence.</h4>
+            <p>
+              Healthcare infrastructure demands more than good design — it
+              demands precision, reliability and uncompromising attention to
+              patient safety. PEHSPL brings together engineering expertise,
+              proven cleanroom solutions and end-to-end project execution to
+              create critical healthcare environments that perform to the
+              highest standards.
+            </p>
+            <p>
+              From Operating Theatres and ICUs to IVF Laboratories and other
+              specialized healthcare spaces, we combine design, supply,
+              installation and project execution under one roof. Our approach
+              is focused on delivering environments that are safe, compliant,
+              efficient and built for long-term performance.
+            </p>
+          </div>
           <div>
             <p>
               PEHSPL exclusively uses cleanroom panels, combining globally
